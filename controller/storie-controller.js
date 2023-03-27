@@ -1,31 +1,32 @@
-const StorieDTO = require("../dto/storie-dto")
-const StorieService = require("../service/storie-service")
+const StorieDTO = require("../dto/storie-dto");
+const StorieService = require("../service/storie-service");
 
 module.exports = class StorieController {
+  static async validade(params) {
+    try {
 
-    static async validade(params) {
+      const timestamp = new Date().getTime(); // timestamp atual
+      const dateObj = new Date(timestamp); // objeto Date a partir do timestamp
+      const year = dateObj.getFullYear();
+      const month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+      const day = ("0" + dateObj.getDate()).slice(-2);
+      const hours = ("0" + dateObj.getHours()).slice(-2);
+      const minutes = ("0" + dateObj.getMinutes()).slice(-2);
+      const seconds = ("0" + dateObj.getSeconds()).slice(-2);
 
-        try{
+      const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-            console.log("params: ", params)
+      const storieDTO = new StorieDTO(params, formattedDate);
 
-            // if(!params.id && !params.title && !params.description && !params.url && !params.cover && !params.createdAt) throw new Error("Parameters not found")
+      console.log("Entrou no DTO e retornou: ", storieDTO);
 
-            const storieDTO = new StorieDTO.mountStoryHTML(params)
+      const result = await StorieService.createStorie(storieDTO);
 
-            console.log("Entrou no DTO e retornou: ", storieDTO)
+      console.log("Result da inserção: ", result);
 
-            const result = await StorieService.cresteStorie(storieDTO)
-            
-
-            if(!result) throw new Error("Error: result is empty")
-
-            return result
-
-        } catch(err) {
-
-            console.error("Erro na validação dos parametros: ", err)
-            
-        }
+      return result;
+    } catch (err) {
+      console.error("Erro na validação dos parametros: ", err);
     }
-}
+  }
+};

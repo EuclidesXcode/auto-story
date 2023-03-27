@@ -6,7 +6,7 @@
   "author": "Euclides Silva",
   "license": "MIT",
   "scripts": {
-    "run": "node ./index.js"
+    "run": "node index.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
