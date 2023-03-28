@@ -195,7 +195,7 @@ module.exports = class StorieDTO {
       </div>
    </amp-story-grid-layer>
       <amp-story-page-outlink layout="nodisplay">
-         <a href="${params.url}" rel="">Saiba mais</a>
+         <a href="${params.url_post}" rel="">Saiba mais</a>
       </amp-story-page-outlink>
    </amp-story-page>
 
@@ -229,10 +229,10 @@ module.exports = class StorieDTO {
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;
    font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
          <span>
-            <span style="color: #fff">${params.description1}</span>
+            <span style="color: #fff">Foi mesmo essa porra</span>
          </span>
       </p></div></div></div></div></div></div>
-   </amp-story-grid-layer><amp-story-page-outlink layout="nodisplay"><a href="${params.url}" rel="">Saiba mais</a></amp-story-page-outlink>
+   </amp-story-grid-layer><amp-story-page-outlink layout="nodisplay"><a href="${params.url_post}" rel="">Saiba mais</a></amp-story-page-outlink>
    </amp-story-page>
    
    <amp-story-page id="f14f1521-5071-46c7-9d91-69bda6594560" auto-advance-after="7s"><amp-story-animation layout="nodisplay" trigger="visibility">
@@ -261,11 +261,11 @@ module.exports = class StorieDTO {
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;
       text-align:left;padding:0;color:#000000">
          <span>
-            <span style="color: #fff">${params.description2}</span>
+            <span style="color: #fff">Foi mesmo essa porra</span>
          </span>
       </p></div></div></div></div></div></div></amp-story-grid-layer>
    <amp-story-page-outlink layout="nodisplay">
-      <a href="${params.url}" rel="">Saiba mais</a>
+      <a href="${params.url_post}" rel="">Saiba mais</a>
    </amp-story-page-outlink></amp-story-page>
    
    <amp-story-page id="a2e330fe-7dc3-4946-a8d0-38bc94548fa9" auto-advance-after="7s">
@@ -296,11 +296,11 @@ module.exports = class StorieDTO {
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,
       sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
          <span>
-            <span style="color: #fff">${params.description3}</span>
+            <span style="color: #fff">Foi mesmo essa porra</span>
          </span>
       </p></div></div></div></div></div></div></amp-story-grid-layer>
    <amp-story-page-outlink layout="nodisplay">
-      <a href="${params.url}" rel="">Saiba mais</a>   
+      <a href="${params.url_post}" rel="">Saiba mais</a>   
    </amp-story-page-outlink></amp-story-page>
 
    <amp-story-page id="972597c0-c4ef-4eed-ba8c-862232d6185b" auto-advance-after="7s"><amp-story-animation layout="nodisplay" trigger="visibility"><script type="application/json">
@@ -330,11 +330,11 @@ module.exports = class StorieDTO {
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;
       font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
          <span>
-            <span style="color: #fff">${params.description4}</span>
+            <span style="color: #fff">Foi mesmo essa porra</span>
          </span>
       </p></div></div></div></div></div></div></amp-story-grid-layer>
    <amp-story-page-outlink layout="nodisplay">
-      <a href="${params.url}" rel="">Saiba mais</a>
+      <a href="${params.url_post}" rel="">Saiba mais</a>
    </amp-story-page-outlink></amp-story-page>
 
    <amp-story-page id="7f047b1d-7e95-47ed-b536-a99e78124076" auto-advance-after="7s"><amp-story-animation layout="nodisplay" trigger="visibility"><script type="application/json">
@@ -363,22 +363,22 @@ module.exports = class StorieDTO {
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;
       margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
          <span>
-            <span style="color: #fff">${params.description5}</span>
+            <span style="color: #fff">Foi mesmo essa porra</span>
          </span>
       </p></div></div></div></div></div></div></amp-story-grid-layer>
-   <amp-story-page-outlink layout="nodisplay"><a href="${params.url}" rel="">Saiba mais</a>
+   <amp-story-page-outlink layout="nodisplay"><a href="${params.url_post}" rel="">Saiba mais</a>
    </amp-story-page-outlink></amp-story-page>
       
    </amp-story>
       </body>
    </html>`,
    this.post_title = params.title,
-   this.post_excerpt = params.description1,
+   this.post_excerpt = params.excerpt,
    this.post_status = "publish",
    this.comment_status = "closed",
    this.ping_status = "closed",
    this.post_password = "",
-   this.post_name = params.title.replace(/[ç ,]+/g, "-"),
+   this.post_name = params.title.replace(/[ç ,]+/g, "-").toLowerCase(),
    this.to_ping = "",
    this.pinged = "",
    this.post_modified = formattedDate,
@@ -1851,7 +1851,7 @@ module.exports = class StorieDTO {
       }
    }`,
    this.post_parent = 0,
-   this.guid = params.url,
+   this.guid = params.url_post,
    this.menu_order = "",
    this.post_type = "web-story",
    this.post_mime_type = "",
