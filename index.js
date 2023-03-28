@@ -19,6 +19,9 @@ app.post("/story", async (req, res) => {
 
 // db test
 app.post("/story/insert", async (req, res) => {
+
+  console.log("O que recebemos do site: ", req.body)
+
   await StorieController.validade(req.body);
 
   res.send("Dados inseridos com sucesso!");
