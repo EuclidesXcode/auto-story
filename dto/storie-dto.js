@@ -1,3 +1,5 @@
+const Styles = require("../lib/styles")
+
 module.exports = class StorieDTO {
 
   constructor(params, formattedDate) {
