@@ -7,7 +7,7 @@ class GPTService {
         
         const headers = {
             "Content-Type": "application/json",
-            Authorization: "Bearer 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"
+            Authorization: "Bearer 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"
         };
 
         const content = `Retorne um array com 5 textos baseados nesse titulo: ${title}`
