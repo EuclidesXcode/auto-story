@@ -9,7 +9,7 @@ class GPTService {
         
         const headers = {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.API_KEY_OPEN_IA || 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}`,
+            Authorization: `Bearer ${process.env.API_KEY_OPEN_IA || "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"}`,
         };
 
         const newPronpt = `Retorne um array com 5 textos baseados nesse titulo: ${title}`
