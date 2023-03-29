@@ -33,7 +33,7 @@ module.exports = class StorieController {
 
       return result;
     } catch (err) {
-      console.error("Erro na validação dos parametros: ", err);
+      console.error("Controller Error: ", err);
     }
   }
 };
