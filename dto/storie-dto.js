@@ -184,7 +184,8 @@ module.exports = class StorieDTO {
                   font-size:0.404531em;
                   line-height:1.2;
                   text-align:left;
-                  padding:0;color:#000000">
+                  padding:0;color:#000000"
+                  margin-bottom:10px>
                      <span>
                         <span style="font-weight: 700; color: #ffcc4a">${params.title}</span>
                      </span>
@@ -212,19 +213,14 @@ module.exports = class StorieDTO {
    left:0;top:-9.25926%;width:100%;height:118.51852%;opacity:1"><div id="anim-d1e54ff9-9a47-4328-bfc8-f772106e8afb" class="animation-wrapper" style="width:100%;height:100%;display:block;
    position:absolute;top:0;left:0"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:0;left:0;z-index:0" class="mask" 
    id="el-517abc8c-727f-48d7-adf2-f2ee77796228"><div style="position:absolute;width:266.77088%;height:100%;left:-83.38544%;top:0%" data-leaf-element="true">
-   <amp-img layout="fill" src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/calendario-auxilio-brasil-outubro.jpeg" 
-   alt="${params.title}" 
-   srcSet="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/calendario-auxilio-brasil-outubro.jpeg 1280w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/calendario-auxilio-brasil-outubro-1024x682.jpeg 1024w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/calendario-auxilio-brasil-outubro-768x512.jpeg 768w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/calendario-auxilio-brasil-outubro-300x200.jpeg 300w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/calendario-auxilio-brasil-outubro-150x100.jpeg 150w" sizes="(min-width: 1024px) 120vh, 267vw" disable-inline-width="true">
+   <amp-img layout="fill" src="https://www.ofuxico.com.br/wp-content/uploads/2023/02/Gloria-Maria-idade.jpg" 
+   alt="${params.title}" sizes="(min-width: 1024px) 120vh, 267vw" disable-inline-width="true">
    </amp-img></div><div class="element-overlay-area" style="background-color:rgba(0,0,0,0.5)"></div></div></div></div><div class="page-background-overlay-area" style="background-color:rgba(0,0,0,0.5)">
    </div></div></div></amp-story-grid-layer><amp-story-grid-layer template="vertical" aspect-ratio="412:618" class="grid-layer">
    <div class="page-fullbleed-area"><div class="page-safe-area"><div style="position:absolute;pointer-events:none;left:11.65049%;top:69.7411%;width:76.45631%;height:19.57929%;opacity:1">
    <div id="anim-afefb521-ff1d-4d34-af83-1a542e7573af" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:0;--initial-transform:none">
    <div id="anim-4739541a-7123-44a5-8f9c-6d1911899d93" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:1;--initial-transform:
-   translate3d(0px, 201.83653%, 0)"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:0;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 
+   translate3d(0px, 201.83653%, 0)"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:-10px;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 
    0.6349206349206349% 0.6349206349206349% / 1.6528925619834711% 1.6528925619834711% 1.6528925619834711% 1.6528925619834711%" id="el-6ab4f55d-0735-4efc-b420-596b4bc2b1e9">
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;
    font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
@@ -256,7 +252,7 @@ module.exports = class StorieDTO {
    <div class="page-safe-area"><div style="position:absolute;pointer-events:none;left:11.65049%;top:69.7411%;width:76.45631%;height:15.53398%;opacity:1"><div id="anim-94181906-f1fd-453a-bc46-f3edc070a6b9" c
    lass="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:0;--initial-transform:none"><div id="anim-95ca6064-7711-4825-8890-c78f07d26aed" 
    class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:1;--initial-transform:translate3d(0px, 254.39816%, 0)">
-   <div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:0;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 
+   <div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:-10px;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 
    2.083333333333333% 2.083333333333333% 2.083333333333333% 2.083333333333333%" id="el-e0786df8-bbec-46f1-91f3-7d0425da16b7">
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;
       text-align:left;padding:0;color:#000000">
@@ -291,7 +287,7 @@ module.exports = class StorieDTO {
    <div class="page-fullbleed-area"><div class="page-safe-area"><div style="position:absolute;pointer-events:none;left:11.65049%;top:64.88673%;width:76.45631%;height:23.46278%;opacity:1">
    <div id="anim-450ad305-f720-42a3-b5f2-c16fddf8741b" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:0;--initial-transform:none">
    <div id="anim-235ddc4a-c597-42e0-9a9b-1dd511b05601" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:1;
-   --initial-transform:translate3d(0px, 189.11881%, 0)"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:0;left:0;z-index:0;border-radius:0.6349206349206349% 
+   --initial-transform:translate3d(0px, 189.11881%, 0)"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:-10px;left:0;z-index:0;border-radius:0.6349206349206349% 
    0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 1.3793103448275863% 1.3793103448275863% 1.3793103448275863% 1.3793103448275863%" id="el-24d63b3f-16fa-4f69-8b39-92e27c519c3d">
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,
       sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
@@ -323,7 +319,7 @@ module.exports = class StorieDTO {
    style="background-color:rgba(0,0,0,0.5)"></div></div></div></amp-story-grid-layer><amp-story-grid-layer template="vertical" aspect-ratio="412:618" class="grid-layer">
    <div class="page-fullbleed-area"><div class="page-safe-area"><div style="position:absolute;pointer-events:none;left:11.65049%;top:64.88673%;width:76.45631%;height:23.46278%;opacity:1">
    <div id="anim-a42632ec-ce81-4cce-ab0a-8e98c47f8fdc" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:0;
-   --initial-transform:none"><div id="anim-fec9b7cf-52ca-4a23-bfe3-19f9d0704ad4" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;
+   --initial-transform:none"><div id="anim-fec9b7cf-52ca-4a23-bfe3-19f9d0704ad4" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:-10px;left:0;
    --initial-opacity:1;--initial-transform:translate3d(0px, 189.11881%, 0)"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:0;left:0;z-index:0;
    border-radius:0.6349206349206349% 0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 1.3793103448275863% 1.3793103448275863% 1.3793103448275863% 1.3793103448275863%" 
    id="el-2401ca1d-7986-455b-8beb-d0d2b0facc6b">
@@ -358,7 +354,7 @@ module.exports = class StorieDTO {
    <div style="position:absolute;pointer-events:none;left:11.65049%;top:68.12298%;width:76.45631%;height:19.57929%;opacity:1"><div id="anim-0222b9c2-9a8b-4567-bdbd-c2787205ed0b" class="animation-wrapper" 
    style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:0;--initial-transform:none"><div id="anim-17e5fff1-2deb-4e7c-adff-893b3cc0aad9" class="animation-wrapper" 
    style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:1;--initial-transform:translate3d(0px, 210.10098%, 0)"><div style="pointer-events:initial;width:100%;
-   height:100%;display:block;position:absolute;top:0;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 1.6528925619834711% 1.6528925619834711% 
+   height:100%;display:block;position:absolute;top:-10px;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 1.6528925619834711% 1.6528925619834711% 
    1.6528925619834711% 1.6528925619834711%" id="el-4ff7ccf2-b4ba-49b0-a3f9-0a79647badcb">
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;
       margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
