@@ -17,7 +17,11 @@ module.exports = class StorieController {
 
       const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-      const contentArrayByChatGPT = await GPTService.generateText(params.title)
+      const responseGPT = await GPTService.generateText(params.title)
+
+      const contentArrayByChatGPT = responseGPT.choices[0].message.content.split('\n')
+
+      console.log("FICOU ASSIM O ARRAY: ", contentArrayByChatGPT)
 
       const storieDTO = new StorieDTO(params, formattedDate, contentArrayByChatGPT);
 

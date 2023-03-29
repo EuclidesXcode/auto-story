@@ -3,23 +3,19 @@ const axios = require("axios");
 class GPTService {
 
     static async generateText(title) {
-        const url = "https://api.openai.com/v1/engines/davinci-codex/completions";
-
-        console.log("Minha API_KEY: ", process.env.API_KEY_OPEN_IA)
+        const url = "https://api.openai.com/v1/chat/completions";
         
         const headers = {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.API_KEY_OPEN_IA || "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"}`,
+            Authorization: `Bearer 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`,
         };
 
-        const newPronpt = `Retorne um array com 5 textos baseados nesse titulo: ${title}`
+        const content = `Retorne um array com 5 textos baseados nesse titulo: ${title}`
         
         const data = {
-            prompt: newPronpt,
-            max_tokens: 50,
-            temperature: 0.5,
-            n: 1,
-            stop: "\n",
+            messages: [{"role": "user", "content": content}],
+            model: "gpt-3.5-turbo",
+            temperature: 0.7
         };
         
         const response = await axios.post(url, data, { headers });
