@@ -57,11 +57,43 @@ class StorieService {
       // Executando a instrução SQL
       connection.query(sql, values, (error, result) => {
         if (error) throw error;
+
+        StorieService.insertCategories(result.id, dto.categories)
+
         return result
       });
     } catch (err) {
       console.error("Error, storie not created: ", err);
     }
+  }
+
+  static insertCategories(storyId, dto) {
+    // codigo 
+
+    try {
+      // Criando uma instrução SQL para inserir dados na tabela
+      const sql = `INSERT INTO 1Yx5s_posts (
+        categories,
+        comment_count) VALUES (?) WHERE id = ${storyId}`;
+      const values = [
+        dto.categories
+      ];
+
+      // Executando a instrução SQL
+      connection.query(sql, values, (error, result) => {
+        if (error) throw error;
+
+        StorieService.insertTaxonomies(storyId, dto)
+
+        return result
+      });
+    } catch (err) {
+      console.error("Error, storie not created: ", err);
+    }
+  }
+
+  static insertTaxonomies(storyId, taxonomies) {
+
   }
 }
 
