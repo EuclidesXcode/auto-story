@@ -22,7 +22,7 @@ class GPTService {
 
         console.log("Retorno do ChatGPT: ", response)
         
-        return response.data.choices[0].text;
+        return response.data;
     };
 }
 
