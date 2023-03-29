@@ -341,11 +341,7 @@ module.exports = class StorieDTO {
                               color: #000000;
                            "
                            >
-                           <span
-                              ><span style="font-weight: 700; color: #ffcc4a"
-                                 >${content[0]}</span
-                              ></span
-                           >
+                           <span><span style="font-weight: 700; color: #ffcc4a">${content[0]}</span></span>
                            </h3>
                         </div>
                      </div>
@@ -561,11 +557,7 @@ module.exports = class StorieDTO {
                                  color: #000000;
                                  "
                               >
-                                 <span
-                                 ><span style="color: #fff"
-                                    >${content[1]}</span
-                                 ></span
-                                 >
+                                 <span><span style="color: #fff">${content[1]}</span></span>
                               </p>
                            </div>
                            </div>
@@ -783,11 +775,7 @@ module.exports = class StorieDTO {
                                  color: #000000;
                                  "
                               >
-                                 <span
-                                 ><span style="color: #fff"
-                                    >${content[2]}</span
-                                 ></span
-                                 >
+                                 <span><span style="color: #fff">${content[2]}</span></span>
                               </p>
                            </div>
                            </div>
@@ -1004,12 +992,7 @@ module.exports = class StorieDTO {
                                  padding: 4.179104477611941% 5.3731343283582085%;
                                  color: #000000;
                                  "
-                              >
-                                 <span
-                                 ><span style="color: #fff"
-                                    >${content[3]}</span
-                                 ></span
-                                 >
+                              ><span><span style="color: #fff">${content[3]}</span></span>
                               </p>
                            </div>
                            </div>
@@ -1226,12 +1209,7 @@ module.exports = class StorieDTO {
                                  padding: 4.179104477611941% 5.3731343283582085%;
                                  color: #000000;
                                  "
-                              >
-                                 <span
-                                 ><span style="color: #fff"
-                                    >${content[4]}</span
-                                 ></span
-                                 >
+                              ><span><span style="color: #fff">${content[4]}</span></span>
                               </p>
                            </div>
                            </div>
@@ -1448,12 +1426,7 @@ module.exports = class StorieDTO {
                                  padding: 4.179104477611941% 5.3731343283582085%;
                                  color: #000000;
                                  "
-                              >
-                                 <span
-                                 ><span style="color: #fff"
-                                    >${content[5]}</span
-                                 ></span
-                                 >
+                              ><span><span style="color: #fff">${content[5]}</span></span>
                               </p>
                            </div>
                            </div>
@@ -1670,12 +1643,7 @@ module.exports = class StorieDTO {
                                  padding: 4.179104477611941% 5.3731343283582085%;
                                  color: #000000;
                                  "
-                              >
-                                 <span
-                                 ><span style="color: #fff"
-                                    >${content[6]}</span
-                                 ></span
-                                 >
+                              ><span><span style="color: #fff">${content[6]}</span></span>
                               </p>
                            </div>
                            </div>

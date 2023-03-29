@@ -12,7 +12,7 @@ class GPTService {
             Authorization: `Bearer ${process.env.API_KEY_OPEN_IA}`
         };
 
-        const content = `Retorne um array com 5 paragrafos com no maximo 20 palavras, baseados nesse titulo: ${title}`
+        const content = `Retorne um array com 7 paragrafos com no maximo 15 palavras, baseados nesse titulo: ${title}`
         
         const data = {
             messages: [{"role": "user", "content": content}],
