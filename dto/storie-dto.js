@@ -1,12 +1,11 @@
-const Styles = require("../lib/styles")
+const Styles = require("../lib/styles");
 
 module.exports = class StorieDTO {
-
   constructor(params, formattedDate) {
-   this.post_author = 1,
-   this.post_date = formattedDate,
-   this.post_date_gmt = formattedDate,
-   this.post_content = `<html amp="" lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/>
+    (this.post_author = 1),
+      (this.post_date = formattedDate),
+      (this.post_date_gmt = formattedDate),
+      (this.post_content = `<html amp="" lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/>
    <script async="" src="https://cdn.ampproject.org/v0.js"></script><script async="" src="https://cdn.ampproject.org/v0/amp-story-1.0.js" custom-element="amp-story"></script>
    <link href="https://fonts.googleapis.com/css2?display=swap&amp;family=Montserrat%3Awght%40400%3B700" rel="stylesheet"/>
    <link href="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-bolsa-familia-de-900.png" rel="preload" as="image"/>
@@ -373,19 +372,22 @@ module.exports = class StorieDTO {
       
    </amp-story>
       </body>
-   </html>`,
-   this.post_title = params.title,
-   this.post_excerpt = params.excerpt,
-   this.post_status = "publish",
-   this.comment_status = "closed",
-   this.ping_status = "closed",
-   this.post_password = "",
-   this.post_name = params.title.replace(/[ç ,]+/g, "-").toLowerCase().replace(/[^a-zA-Z0-9]/g, ''),
-   this.to_ping = "",
-   this.pinged = "",
-   this.post_modified = formattedDate,
-   this.post_modified_gmt = formattedDate,
-   this.post_content_filtered = `{
+   </html>`),
+      (this.post_title = params.title),
+      (this.post_excerpt = params.excerpt),
+      (this.post_status = "publish"),
+      (this.comment_status = "closed"),
+      (this.ping_status = "closed"),
+      (this.post_password = ""),
+      (this.post_name = params.title
+        .replace(/[ç ,]+/g, "-")
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9]/g, "")),
+      (this.to_ping = ""),
+      (this.pinged = ""),
+      (this.post_modified = formattedDate),
+      (this.post_modified_gmt = formattedDate),
+      (this.post_content_filtered = `{
       "version":47,
       "pages":[
          {
@@ -1851,13 +1853,12 @@ module.exports = class StorieDTO {
             
          ]
       }
-   }`,
-   this.post_parent = 0,
-   this.guid = params.url_post,
-   this.menu_order = "",
-   this.post_type = "web-story",
-   this.post_mime_type = "",
-   this.comment_count = 0
+   }`),
+      (this.post_parent = 0),
+      (this.guid = params.url_post),
+      (this.menu_order = ""),
+      (this.post_type = "web-story"),
+      (this.post_mime_type = ""),
+      (this.comment_count = 0);
   }
-}
-
+};
