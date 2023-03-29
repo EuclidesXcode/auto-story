@@ -7,7 +7,7 @@ module.exports = class StorieDTO {
    this.post_content = `<html amp="" lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/>
    <script async="" src="https://cdn.ampproject.org/v0.js"></script><script async="" src="https://cdn.ampproject.org/v0/amp-story-1.0.js" custom-element="amp-story"></script>
    <link href="https://fonts.googleapis.com/css2?display=swap&amp;family=Montserrat%3Awght%40400%3B700" rel="stylesheet"/>
-   <link href="https://nolugarideal.com.br/wp-content/uploads/2022/05/cropped-economia-real-dinheiro-20180409-006.webp" rel="preload" as="image"/>
+   <link href="https://www.ofuxico.com.br/wp-content/uploads/2023/02/Gloria-Maria-idade.jpg" rel="preload" as="image"/>
    <style amp-boilerplate="">
       body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
       -moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
@@ -136,7 +136,7 @@ module.exports = class StorieDTO {
    <body>
 
    <amp-story standalone="" publisher="Benefício em Foco" publisher-logo-src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-info-moeda.png" 
-   title="${params.title}" poster-portrait-src="https://nolugarideal.com.br/wp-content/uploads/2022/05/cropped-economia-real-dinheiro-20180409-006.webp">
+   title="${params.title}" poster-portrait-src="https://www.ofuxico.com.br/wp-content/uploads/2023/02/Gloria-Maria-idade.jpg">
 
 
 
@@ -146,10 +146,8 @@ module.exports = class StorieDTO {
             <div class="page-safe-area"><div style="position:absolute;pointer-events:none;left:0;top:-9.25926%;width:100%;height:118.51852%;opacity:1">
                <div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:0;left:0;z-index:0" class="mask" id="el-0f7fbd3c-204d-4c6a-8480-93c4a823fd64">
                   <div style="position:absolute;width:133.38544%;height:100%;left:-16.69272%;top:0%" data-leaf-element="true">
-                     <amp-img layout="fill" src="https://nolugarideal.com.br/wp-content/uploads/2022/05/cropped-economia-real-dinheiro-20180409-006.webp" alt="${params.title}" 
-                        srcSet="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-bolsa-familia-de-900-640x853.png 640w,
-                        https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-bolsa-familia-de-900-225x300.png 225w,
-                        https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-bolsa-familia-de-900-150x200.png 150w" sizes="(min-width: 1024px) 60vh, 133vw" disable-inline-width="true">
+                     <amp-img layout="fill" src="https://www.ofuxico.com.br/wp-content/uploads/2023/02/Gloria-Maria-idade.jpg" alt="${params.title}" 
+                      sizes="(min-width: 1024px) 60vh, 133vw" disable-inline-width="true">
                      </amp-img>
                   </div>
                      <div class="element-overlay-area" style="background-color:rgba(0,0,0,0.5)">
@@ -220,7 +218,7 @@ module.exports = class StorieDTO {
    <div class="page-fullbleed-area"><div class="page-safe-area"><div style="position:absolute;pointer-events:none;left:11.65049%;top:69.7411%;width:76.45631%;height:19.57929%;opacity:1">
    <div id="anim-afefb521-ff1d-4d34-af83-1a542e7573af" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:0;--initial-transform:none">
    <div id="anim-4739541a-7123-44a5-8f9c-6d1911899d93" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:1;--initial-transform:
-   translate3d(0px, 201.83653%, 0)"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:-10px;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 
+   translate3d(0px, 201.83653%, 0)"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:-20px;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 
    0.6349206349206349% 0.6349206349206349% / 1.6528925619834711% 1.6528925619834711% 1.6528925619834711% 1.6528925619834711%" id="el-6ab4f55d-0735-4efc-b420-596b4bc2b1e9">
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;
    font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
@@ -241,18 +239,13 @@ module.exports = class StorieDTO {
    <div style="position:absolute;pointer-events:none;left:0;top:-9.25926%;width:100%;height:118.51852%;opacity:1"><div id="anim-2582678c-d711-4ed2-82dd-6ca87654e1fb" class="animation-wrapper" 
    style="width:100%;height:100%;display:block;position:absolute;top:0;left:0"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:0;left:0;z-index:0" 
    class="mask" id="el-7da39283-2218-4129-ace7-c3739bd810eb"><div style="position:absolute;width:284.44445%;height:100%;left:-92.22222%;top:0%" data-leaf-element="true"><amp-img layout="fill" 
-   src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-de-outubro-800.jpeg" alt="${params.title}" 
-   srcSet="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-de-outubro-800.jpeg 1200w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-de-outubro-800-1024x640.jpeg 1024w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-de-outubro-800-768x480.jpeg 768w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-de-outubro-800-300x188.jpeg 300w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-de-outubro-800-150x94.jpeg 150w" sizes="(min-width: 1024px) 128vh, 285vw" disable-inline-width="true">
+   src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-de-outubro-800.jpeg" alt="${params.title}" sizes="(min-width: 1024px) 128vh, 285vw" disable-inline-width="true">
    </amp-img></div><div class="element-overlay-area" style="background-color:rgba(0,0,0,0.5)"></div></div></div></div><div class="page-background-overlay-area" 
    style="background-color:rgba(0,0,0,0.5)"></div></div></div></amp-story-grid-layer><amp-story-grid-layer template="vertical" aspect-ratio="412:618" class="grid-layer"><div class="page-fullbleed-area">
    <div class="page-safe-area"><div style="position:absolute;pointer-events:none;left:11.65049%;top:69.7411%;width:76.45631%;height:15.53398%;opacity:1"><div id="anim-94181906-f1fd-453a-bc46-f3edc070a6b9" c
    lass="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:0;--initial-transform:none"><div id="anim-95ca6064-7711-4825-8890-c78f07d26aed" 
    class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:1;--initial-transform:translate3d(0px, 254.39816%, 0)">
-   <div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:-10px;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 
+   <div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:-20px;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 
    2.083333333333333% 2.083333333333333% 2.083333333333333% 2.083333333333333%" id="el-e0786df8-bbec-46f1-91f3-7d0425da16b7">
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;
       text-align:left;padding:0;color:#000000">
@@ -275,19 +268,13 @@ module.exports = class StorieDTO {
    <div id="anim-2461e833-750a-4634-9848-b9d4e29914bd" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0"><div style="pointer-events:initial;width:100%;
    height:100%;display:block;position:absolute;top:0;left:0;z-index:0" class="mask" id="el-04a11c3f-c5bb-4c37-bac5-29c1ae2e72a6"><div style="position:absolute;width:177.77778%;height:100%;left:-38.88889%;
    top:0%" data-leaf-element="true"><amp-img layout="fill" src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/emprestimo-mei.webp" 
-   alt="${params.title}" 
-   srcSet="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/emprestimo-mei.webp 1200w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/emprestimo-mei-1024x1024.webp 1024w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/emprestimo-mei-768x768.webp 768w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/emprestimo-mei-300x300.webp 300w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/emprestimo-mei-150x150.webp 150w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/emprestimo-mei-96x96.webp 96w" sizes="(min-width: 1024px) 80vh, 178vw" disable-inline-width="true">
+   alt="${params.title}"  sizes="(min-width: 1024px) 80vh, 178vw" disable-inline-width="true">
    </amp-img></div><div class="element-overlay-area" style="background-color:rgba(0,0,0,0.2)"></div></div></div></div><div class="page-background-overlay-area" 
    style="background-color:rgba(0,0,0,0.2)"></div></div></div></amp-story-grid-layer><amp-story-grid-layer template="vertical" aspect-ratio="412:618" class="grid-layer">
    <div class="page-fullbleed-area"><div class="page-safe-area"><div style="position:absolute;pointer-events:none;left:11.65049%;top:64.88673%;width:76.45631%;height:23.46278%;opacity:1">
    <div id="anim-450ad305-f720-42a3-b5f2-c16fddf8741b" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:0;--initial-transform:none">
    <div id="anim-235ddc4a-c597-42e0-9a9b-1dd511b05601" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:1;
-   --initial-transform:translate3d(0px, 189.11881%, 0)"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:-10px;left:0;z-index:0;border-radius:0.6349206349206349% 
+   --initial-transform:translate3d(0px, 189.11881%, 0)"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:-20px;left:0;z-index:0;border-radius:0.6349206349206349% 
    0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 1.3793103448275863% 1.3793103448275863% 1.3793103448275863% 1.3793103448275863%" id="el-24d63b3f-16fa-4f69-8b39-92e27c519c3d">
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,
       sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
@@ -309,17 +296,12 @@ module.exports = class StorieDTO {
    <div style="position:absolute;pointer-events:none;left:0;top:-9.25926%;width:100%;height:118.51852%;opacity:1"><div id="anim-50bc10b8-b0bf-4e58-82f7-d37748f72218" class="animation-wrapper" 
    style="width:100%;height:100%;display:block;position:absolute;top:0;left:0"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:0;left:0;z-index:0" 
    class="mask" id="el-8851a0d2-22ad-4c0b-9de0-1bed5d33cf5f"><div style="position:absolute;width:316.04939%;height:100%;left:-44.83025%;top:0%" data-leaf-element="true"><amp-img layout="fill" 
-   src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-2.jpeg" alt="${params.title}" 
-   srcSet="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-2.jpeg 1280w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-2-1024x576.jpeg 1024w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-2-768x432.jpeg 768w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-2-300x169.jpeg 300w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-2-150x84.jpeg 150w" sizes="(min-width: 1024px) 143vh, 317vw" disable-inline-width="true">
+   src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/auxilio-brasil-2.jpeg" alt="${params.title}"  sizes="(min-width: 1024px) 143vh, 317vw" disable-inline-width="true">
    </amp-img></div><div class="element-overlay-area" style="background-color:rgba(0,0,0,0.5)"></div></div></div></div><div class="page-background-overlay-area" 
    style="background-color:rgba(0,0,0,0.5)"></div></div></div></amp-story-grid-layer><amp-story-grid-layer template="vertical" aspect-ratio="412:618" class="grid-layer">
    <div class="page-fullbleed-area"><div class="page-safe-area"><div style="position:absolute;pointer-events:none;left:11.65049%;top:64.88673%;width:76.45631%;height:23.46278%;opacity:1">
    <div id="anim-a42632ec-ce81-4cce-ab0a-8e98c47f8fdc" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:0;
-   --initial-transform:none"><div id="anim-fec9b7cf-52ca-4a23-bfe3-19f9d0704ad4" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:-10px;left:0;
+   --initial-transform:none"><div id="anim-fec9b7cf-52ca-4a23-bfe3-19f9d0704ad4" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:-20px;left:0;
    --initial-opacity:1;--initial-transform:translate3d(0px, 189.11881%, 0)"><div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:0;left:0;z-index:0;
    border-radius:0.6349206349206349% 0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 1.3793103448275863% 1.3793103448275863% 1.3793103448275863% 1.3793103448275863%" 
    id="el-2401ca1d-7986-455b-8beb-d0d2b0facc6b">
@@ -344,17 +326,13 @@ module.exports = class StorieDTO {
    <div id="anim-24cde4d4-cf26-411b-8e5e-73472c2cdd63" class="animation-wrapper" style="width:100%;height:100%;display:block;position:absolute;top:0;left:0">
    <div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:0;left:0;z-index:0" class="mask" id="el-ad0ad59d-a513-4286-be6d-2279abcd8cd8">
    <div style="position:absolute;width:266.92734%;height:100%;left:-112.97756%;top:0%" data-leaf-element="true"><amp-img layout="fill" 
-   src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/pis-pasep-omo-receber.webp" alt="${params.title}" 
-   srcSet="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/pis-pasep-omo-receber.webp 1024w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/pis-pasep-omo-receber-768x512.webp 768w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/pis-pasep-omo-receber-300x200.webp 300w,
-   https://beneficioemfoco.com.br/wp-content/uploads/2023/03/pis-pasep-omo-receber-150x100.webp 150w" sizes="(min-width: 1024px) 120vh, 267vw" disable-inline-width="true"></amp-img>
+   src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/pis-pasep-omo-receber.webp" alt="${params.title}" sizes="(min-width: 1024px) 120vh, 267vw" disable-inline-width="true"></amp-img>
    </div><div class="element-overlay-area" style="background-color:rgba(0,0,0,0.5)"></div></div></div></div><div class="page-background-overlay-area" style="background-color:rgba(0,0,0,0.5)">
    </div></div></div></amp-story-grid-layer><amp-story-grid-layer template="vertical" aspect-ratio="412:618" class="grid-layer"><div class="page-fullbleed-area"><div class="page-safe-area">
    <div style="position:absolute;pointer-events:none;left:11.65049%;top:68.12298%;width:76.45631%;height:19.57929%;opacity:1"><div id="anim-0222b9c2-9a8b-4567-bdbd-c2787205ed0b" class="animation-wrapper" 
    style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:0;--initial-transform:none"><div id="anim-17e5fff1-2deb-4e7c-adff-893b3cc0aad9" class="animation-wrapper" 
    style="width:100%;height:100%;display:block;position:absolute;top:0;left:0;--initial-opacity:1;--initial-transform:translate3d(0px, 210.10098%, 0)"><div style="pointer-events:initial;width:100%;
-   height:100%;display:block;position:absolute;top:-10px;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 1.6528925619834711% 1.6528925619834711% 
+   height:100%;display:block;position:absolute;top:-20px;left:0;z-index:0;border-radius:0.6349206349206349% 0.6349206349206349% 0.6349206349206349% 0.6349206349206349% / 1.6528925619834711% 1.6528925619834711% 
    1.6528925619834711% 1.6528925619834711%" id="el-4ff7ccf2-b4ba-49b0-a3f9-0a79647badcb">
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;
       margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
