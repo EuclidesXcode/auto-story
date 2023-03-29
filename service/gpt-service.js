@@ -7,7 +7,7 @@ class GPTService {
         
         const headers = {
             "Content-Type": "application/json",
-            Authorization: "Bearer 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"
+            Authorization: "Bearer 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"
         };
 
         const content = `Retorne um array com 5 paragrafos com no maximo 20 palavras, baseados nesse titulo: ${title}`
