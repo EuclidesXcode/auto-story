@@ -21,15 +21,9 @@ module.exports = class StorieController {
 
       const contentArrayByChatGPT = responseGPT.choices[0].message.content.split('\n')
 
-      console.log("FICOU ASSIM O ARRAY: ", contentArrayByChatGPT)
-
       const storieDTO = new StorieDTO(params, formattedDate, contentArrayByChatGPT);
 
-      console.log("Entrou no DTO e retornou: ", storieDTO);
-
       const result = await StorieService.createStorie(storieDTO);
-
-      console.log("Result da inserção: ", result);
 
       return result;
     } catch (err) {

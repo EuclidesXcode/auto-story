@@ -2,7 +2,6 @@ const connection = require("../config/db-connect");
 
 class StorieService {
   static async createStorie(dto) {
-    console.log("Entrou no Service com o dto: ", dto);
 
     try {
       // Criando uma instrução SQL para inserir dados na tabela
@@ -57,6 +56,7 @@ class StorieService {
       // Executando a instrução SQL
       connection.query(sql, values, (error, result) => {
         if (error) throw error;
+
         return result
       });
     } catch (err) {
