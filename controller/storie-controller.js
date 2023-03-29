@@ -1,5 +1,6 @@
 const StorieDTO = require("../dto/storie-dto");
 const StorieService = require("../service/storie-service");
+const GPTService = require("../service/gpt-service")
 
 module.exports = class StorieController {
   static async validade(params) {
@@ -16,7 +17,9 @@ module.exports = class StorieController {
 
       const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-      const storieDTO = new StorieDTO(params, formattedDate);
+      const contentArrayByChatGPT = await GPTService.generateText(params.title)
+
+      const storieDTO = new StorieDTO(params, formattedDate, contentArrayByChatGPT);
 
       console.log("Entrou no DTO e retornou: ", storieDTO);
 

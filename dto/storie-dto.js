@@ -1,13 +1,13 @@
 module.exports = class StorieDTO {
 
-  constructor(params, formattedDate) {
+  constructor(params, formattedDate, content) {
    this.post_author = 1,
    this.post_date = formattedDate,
    this.post_date_gmt = formattedDate,
    this.post_content = `<html amp="" lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/>
    <script async="" src="https://cdn.ampproject.org/v0.js"></script><script async="" src="https://cdn.ampproject.org/v0/amp-story-1.0.js" custom-element="amp-story"></script>
    <link href="https://fonts.googleapis.com/css2?display=swap&amp;family=Montserrat%3Awght%40400%3B700" rel="stylesheet"/>
-   <link href="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-bolsa-familia-de-900.png" rel="preload" as="image"/>
+   <link href="https://nolugarideal.com.br/wp-content/uploads/2022/05/cropped-economia-real-dinheiro-20180409-006.webp" rel="preload" as="image"/>
    <style amp-boilerplate="">
       body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
       -moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
@@ -136,7 +136,7 @@ module.exports = class StorieDTO {
    <body>
 
    <amp-story standalone="" publisher="Benefício em Foco" publisher-logo-src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-info-moeda.png" 
-   title="${params.title}" poster-portrait-src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-bolsa-familia-de-900.png">
+   title="${params.title}" poster-portrait-src="https://nolugarideal.com.br/wp-content/uploads/2022/05/cropped-economia-real-dinheiro-20180409-006.webp">
 
 
 
@@ -146,7 +146,7 @@ module.exports = class StorieDTO {
             <div class="page-safe-area"><div style="position:absolute;pointer-events:none;left:0;top:-9.25926%;width:100%;height:118.51852%;opacity:1">
                <div style="pointer-events:initial;width:100%;height:100%;display:block;position:absolute;top:0;left:0;z-index:0" class="mask" id="el-0f7fbd3c-204d-4c6a-8480-93c4a823fd64">
                   <div style="position:absolute;width:133.38544%;height:100%;left:-16.69272%;top:0%" data-leaf-element="true">
-                     <amp-img layout="fill" src="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-bolsa-familia-de-900.png" alt="${params.title}" 
+                     <amp-img layout="fill" src="https://nolugarideal.com.br/wp-content/uploads/2022/05/cropped-economia-real-dinheiro-20180409-006.webp" alt="${params.title}" 
                         srcSet="https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-bolsa-familia-de-900-640x853.png 640w,
                         https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-bolsa-familia-de-900-225x300.png 225w,
                         https://beneficioemfoco.com.br/wp-content/uploads/2023/03/cropped-bolsa-familia-de-900-150x200.png 150w" sizes="(min-width: 1024px) 60vh, 133vw" disable-inline-width="true">
@@ -229,7 +229,7 @@ module.exports = class StorieDTO {
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;
    font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
          <span>
-            <span style="color: #fff">Foi mesmo essa porra</span>
+            <span style="color: #fff">${content[0]}</span>
          </span>
       </p></div></div></div></div></div></div>
    </amp-story-grid-layer><amp-story-page-outlink layout="nodisplay"><a href="${params.url_post}" rel="">Saiba mais</a></amp-story-page-outlink>
@@ -261,7 +261,7 @@ module.exports = class StorieDTO {
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;
       text-align:left;padding:0;color:#000000">
          <span>
-            <span style="color: #fff">Foi mesmo essa porra</span>
+            <span style="color: #fff">${content[1]}</span>
          </span>
       </p></div></div></div></div></div></div></amp-story-grid-layer>
    <amp-story-page-outlink layout="nodisplay">
@@ -296,7 +296,7 @@ module.exports = class StorieDTO {
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,
       sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
          <span>
-            <span style="color: #fff">Foi mesmo essa porra</span>
+            <span style="color: #fff">${content[2]}</span>
          </span>
       </p></div></div></div></div></div></div></amp-story-grid-layer>
    <amp-story-page-outlink layout="nodisplay">
@@ -330,7 +330,7 @@ module.exports = class StorieDTO {
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;margin:0.06031746031746072% 0;
       font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
          <span>
-            <span style="color: #fff">Foi mesmo essa porra</span>
+            <span style="color: #fff">${content[3]}</span>
          </span>
       </p></div></div></div></div></div></div></amp-story-grid-layer>
    <amp-story-page-outlink layout="nodisplay">
@@ -363,7 +363,7 @@ module.exports = class StorieDTO {
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;
       margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
          <span>
-            <span style="color: #fff">Foi mesmo essa porra</span>
+            <span style="color: #fff">${content[4]}/span>
          </span>
       </p></div></div></div></div></div></div></amp-story-grid-layer>
    <amp-story-page-outlink layout="nodisplay"><a href="${params.url_post}" rel="">Saiba mais</a>
@@ -378,7 +378,7 @@ module.exports = class StorieDTO {
    this.comment_status = "closed",
    this.ping_status = "closed",
    this.post_password = "",
-   this.post_name = params.title.replace(/[ç ,]+/g, "-").toLowerCase().replace(/[^a-zA-Z0-9]/g, ''),
+   this.post_name = params.title.toLowerCase().replace(/[^a-zA-Z0-9 ,]/g, '-'),
    this.to_ping = "",
    this.pinged = "",
    this.post_modified = formattedDate,
