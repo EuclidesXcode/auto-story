@@ -363,7 +363,7 @@ module.exports = class StorieDTO {
       <p class="fill text-wrapper" style="white-space:pre-line;overflow-wrap:break-word;word-break:break-word;
       margin:0.06031746031746072% 0;font-family:&quot;Montserrat&quot;,sans-serif;font-size:0.323625em;line-height:1.2;text-align:left;padding:0;color:#000000">
          <span>
-            <span style="color: #fff">${content[4]}/span>
+            <span style="color: #fff">${content[4]}</span>
          </span>
       </p></div></div></div></div></div></div></amp-story-grid-layer>
    <amp-story-page-outlink layout="nodisplay"><a href="${params.url_post}" rel="">Saiba mais</a>
