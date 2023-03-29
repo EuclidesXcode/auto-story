@@ -4,10 +4,12 @@ class GPTService {
 
     static async generateText(title) {
         const url = "https://api.openai.com/v1/chat/completions";
+
+        console.log("MEU >ENV: ", process.env.API_KEY_OPEN_IA)
         
         const headers = {
             "Content-Type": "application/json",
-            Authorization: "Bearer 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"
+            Authorization: `Bearer ${process.env.API_KEY_OPEN_IA}`
         };
 
         const content = `Retorne um array com 5 paragrafos com no maximo 20 palavras, baseados nesse titulo: ${title}`
