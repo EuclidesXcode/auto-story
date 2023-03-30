@@ -15,7 +15,8 @@ class GoogleSearch {
                 q: title,
                 searchType: 'image',
                 imgSize: 'large',
-                auth: API_KEY_GOOGLE_CLOUD,
+                imgType: 'photo',
+                auth: API_KEY_GOOGLE_CLOUD
               });
               
               if (response.data.items && response.data.items.length > 0) {
