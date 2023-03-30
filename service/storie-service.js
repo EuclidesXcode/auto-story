@@ -1,11 +1,12 @@
 const connection = require("../config/db-connect");
 
 class StorieService {
-  static async createStorie(dto) {
+  static async createStorie(storyDto, imageDto) {
 
     try {
-      // Criando uma instrução SQL para inserir dados na tabela
-      const sql = `INSERT INTO 1Yx5s_posts (
+
+      // Inserindo o storu
+      const sqlStory = `INSERT INTO 1Yx5s_posts (
         post_author,
         post_date,
         post_date_gmt,
@@ -28,39 +29,85 @@ class StorieService {
         post_type,
         post_mime_type,
         comment_count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-      const values = [
-        dto.post_author,
-        dto.post_date,
-        dto.post_date_gmt,
-        dto.post_content,
-        dto.post_title,
-        dto.post_excerpt,
-        dto.post_status,
-        dto.comment_status,
-        dto.ping_status,
-        dto.post_password,
-        dto.post_name,
-        dto.to_ping,
-        dto.pinged,
-        dto.post_modified,
-        dto.post_modified_gmt,
-        dto.post_content_filtered,
-        dto.post_parent,
-        dto.guid,
-        dto.menu_order,
-        dto.post_type,
-        dto.post_mime_type,
-        dto.comment_count,
+      const valuesStory = [
+        storyDto.post_author,
+        storyDto.post_date,
+        storyDto.post_date_gmt,
+        storyDto.post_content,
+        storyDto.post_title,
+        storyDto.post_excerpt,
+        storyDto.post_status,
+        storyDto.comment_status,
+        storyDto.ping_status,
+        storyDto.post_password,
+        storyDto.post_name,
+        storyDto.to_ping,
+        storyDto.pinged,
+        storyDto.post_modified,
+        storyDto.post_modified_gmt,
+        storyDto.post_content_filtered,
+        storyDto.post_parent,
+        storyDto.guid,
+        storyDto.menu_order,
+        storyDto.post_type,
+        storyDto.post_mime_type,
+        storyDto.comment_count,
       ];
 
       // Executando a instrução SQL
-      connection.query(sql, values, (error, result) => {
+      connection.query(sqlStory, valuesStory, (error, result) => {
         if (error) throw error;
 
-        return result
+        console.log("RESULT DO STORY: ", result)
+      });
+
+      // Inserindo a imagem de capa
+      const sqlImage = `INSERT INTO 1Yx5s_posts (
+        post_author,
+        post_date,
+        post_date_gmt,
+        post_content,
+        post_title,
+        post_excerpt,
+        post_status,
+        comment_status,
+        ping_status,
+        post_name
+        post_modified,
+        post_modified_gmt,
+        post_parent,
+        guid,
+        post_type,
+        post_mime_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      const valuesImage = [
+        imageDto.post_author,
+        imageDto.post_date,
+        imageDto.post_date_gmt,
+        imageDto.post_content,
+        imageDto.post_title,
+        imageDto.post_excerpt,
+        imageDto.post_status,
+        imageDto.comment_status,
+        imageDto.ping_status,
+        imageDto.post_name,
+        imageDto.post_modified,
+        imageDto.post_modified_gmt,
+        imageDto.post_parent,
+        imageDto.guid,
+        imageDto.post_type,
+        imageDto.post_mime_type,
+      ];
+
+      // Executando a instrução SQL
+      connection.query(sqlImage, valuesImage, (error, result) => {
+        if (error) throw error;
+
+        console.log("RESULT DA IMAGEM: ", result)
       });
     } catch (err) {
+
       console.error("Error, storie not created: ", err);
+
     }
   }
 }

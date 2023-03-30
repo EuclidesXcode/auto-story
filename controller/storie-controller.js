@@ -1,4 +1,5 @@
 const StorieDTO = require("../dto/storie-dto");
+const ImageDTO = require("../dto/image-dto");
 const StorieService = require("../service/storie-service");
 const GPTService = require("../service/gpt-service");
 
@@ -24,10 +25,15 @@ module.exports = class StorieController {
 
       const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-      const responseGPT = await GPTService.generateText(params.title);
+      const contentStory = await GPTService.generateContentStory(params.title);
+      const tags = await GPTService.generateTags(params.title);
+
+      const urlImage = "https://static.poder360.com.br/2021/10/bolsafamilia-848x477.jpg"
+
+      console.log("TAGS GERADAS PELO GPT: ", tags)
 
       const contentArrayByChatGPT =
-        responseGPT.choices[0].message.content.split("\n");
+      contentStory.choices[0].message.content.split("\n");
 
       const storieDTO = new StorieDTO(
         params,
@@ -36,7 +42,9 @@ module.exports = class StorieController {
         slug
       );
 
-      const result = await StorieService.createStorie(storieDTO);
+      const imageDTO = new ImageDTO(params, formattedDate, slug, urlImage)
+
+      const result = await StorieService.createStorie(storieDTO, imageDTO);
 
       return result;
     } catch (err) {
