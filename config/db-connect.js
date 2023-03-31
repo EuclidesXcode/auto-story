@@ -4,7 +4,7 @@ const mysql = require("mysql2");
 class ConnectionToDatabase {
   static conectionMysql() {
     try {
-      mysql.createConnection({
+      return mysql.createConnection({
         host: "107.190.131.154",
         user: "eucode",
         password: "@cod3R00t",
