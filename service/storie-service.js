@@ -134,7 +134,6 @@ class StorieService {
         if (error) throw error;
 
         console.log("RESULT DA IMAGEM: ", result);
-        connection.end();
         return result;
       });
     } catch (err) {
