@@ -1,4 +1,11 @@
-const ConnectionToDatabase = require("../config/db-connect");
+const mysql = require('mysql2');
+
+const connection = mysql.createConnection({
+  host: '107.190.131.154',
+    user: 'eucode',
+    password: '@cod3R00t',
+    database: 'wp_nhczh'
+  });
 
 class StorieService {
   static async createStorie(storyDto, imageDto) {
@@ -53,7 +60,7 @@ class StorieService {
       ];
 
       // Executando a instrução SQL
-      await ConnectionToDatabase.conectionMysql.query(sqlStory, valuesStory, (error, result) => {
+      await connection.query(sqlStory, valuesStory, (error, result) => {
         if (error) throw error;
 
         console.log("RESULT DO STORY: ", result);
@@ -112,7 +119,7 @@ class StorieService {
       ];
 
       // Executando a instrução SQL
-      await ConnectionToDatabase.conectionMysql.query(sqlImage, valuesImage, (error, result) => {
+      await connection.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
         console.log("RESULT DA IMAGEM: ", result);
