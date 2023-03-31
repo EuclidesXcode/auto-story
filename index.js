@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const StorieController = require("./controller/storie-controller");
+const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
 
 const app = express();
 
@@ -9,23 +11,25 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-// Rotas
-app.post("/story", async (req, res) => {
-  const result = await StorieController.validate(req?.body);
-
-  console.log("req.body: ", result);
-  res.send("Olá, mundo!: ");
-});
-
-// db test
+// create story
 app.post("/story/insert", async (req, res) => {
   await StorieController.validade(req.body);
 
   res.send("Dados inseridos com sucesso!");
 });
 
+
+// add a listener for the 'error' event
+myEmitter.on('error', (err) => {
+  console.error('Error occurred:', err);
+});
+
+// emit an error event
+myEmitter.emit('error', new Error('Something went wrong!'));
+
 // Iniciar o servidor
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
+
