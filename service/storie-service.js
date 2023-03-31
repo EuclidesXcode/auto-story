@@ -10,15 +10,18 @@ const connection = mysql.createConnection({
 class StorieService {
   static async createStorie(storyDto, imageDto) {
     try {
-      if (connection.state === 'disconnected') {
-        connection.connect((err) => {
-          if (err) {
-            console.error('Erro ao conectar ao banco de dados: ', err);
-            return;
-          }
-      
-          console.log('Conectado ao banco de dados!');
-        });
+      connection.end();
+      if (connection.state === "disconnected") {
+        setInterval(() => {
+          connection.connect((err) => {
+            if (err) {
+              console.error("Erro ao conectar ao banco de dados: ", err);
+              return;
+            }
+
+            console.log("Conectado ao banco de dados!");
+          });
+        }, 5000);
       }
 
       // Inserindo o storu
