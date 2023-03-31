@@ -89,7 +89,7 @@ class StorieService {
         post_status,
         comment_status,
         ping_status,
-        post_name
+        post_name,
         post_modified,
         post_modified_gmt,
         post_parent,
