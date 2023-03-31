@@ -60,7 +60,7 @@ class StorieService {
 
         console.log("RESULT DO STORY: ", result)
 
-        const insertImage = StorieService.insertImageCover(result.insertId)
+        const insertImage = StorieService.insertImageCover(result.insertId, imageDto)
 
         console.log("INSERIU A IMAGEM: ", insertImage)
       });
@@ -72,7 +72,7 @@ class StorieService {
     }
   }
 
-  static async insertImageCover(storyId) {
+  static async insertImageCover(storyId, imageDto) {
     
     console.log("ID DO STORY: ", storyId)
 
