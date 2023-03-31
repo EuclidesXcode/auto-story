@@ -2,9 +2,7 @@ const connection = require("../config/db-connect");
 
 class StorieService {
   static async createStorie(storyDto, imageDto) {
-
     try {
-
       // Inserindo o storu
       const sqlStory = `INSERT INTO 1Yx5s_posts (
         post_author,
@@ -58,26 +56,24 @@ class StorieService {
       await connection.query(sqlStory, valuesStory, (error, result) => {
         if (error) throw error;
 
-        console.log("RESULT DO STORY: ", result)
+        console.log("RESULT DO STORY: ", result);
 
-        const insertImage = StorieService.insertImageCover(result.insertId, imageDto)
+        const insertImage = StorieService.insertImageCover(
+          result.insertId,
+          imageDto
+        );
 
-        console.log("INSERIU A IMAGEM: ", insertImage)
+        console.log("INSERIU A IMAGEM: ", insertImage);
       });
-
     } catch (err) {
-
       console.error("Error, storie not created: ", err);
-
     }
   }
 
   static async insertImageCover(storyId, imageDto) {
-    
-    console.log("ID DO STORY: ", storyId)
+    console.log("ID DO STORY: ", storyId);
 
-    try{
-
+    try {
       // Inserindo a imagem de capa
       const sqlImage = `INSERT INTO 1Yx5s_posts (
         post_author,
@@ -119,13 +115,12 @@ class StorieService {
       await connection.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
-        console.log("RESULT DA IMAGEM: ", result)
+        console.log("RESULT DA IMAGEM: ", result);
 
-        return result
+        return result;
       });
-
-    } catch(err) {
-      console.error("Error on isert image cover: ", err)
+    } catch (err) {
+      console.error("Error on isert image cover: ", err);
     }
   }
 }

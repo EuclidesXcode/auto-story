@@ -2,7 +2,7 @@ const StorieDTO = require("../dto/storie-dto");
 const ImageDTO = require("../dto/image-dto");
 const StorieService = require("../service/storie-service");
 const GPTService = require("../service/gpt-service");
-const GoogleSearch = require("../service/google-search")
+const GoogleSearch = require("../service/google-search");
 
 module.exports = class StorieController {
   static async validade(params) {
@@ -29,10 +29,10 @@ module.exports = class StorieController {
       const contentStory = await GPTService.generateContentStory(params.title);
       // const tags = await GPTService.generateTags(params.title);
 
-      const urlImage = 'https://i.ytimg.com/vi/mTYZ3Lj71c0/maxresdefault.jpg'  //GoogleSearch.getImageByTitle(params.title)
+      const urlImage = "https://i.ytimg.com/vi/mTYZ3Lj71c0/maxresdefault.jpg"; //GoogleSearch.getImageByTitle(params.title)
 
       const contentArrayByChatGPT =
-      contentStory.choices[0].message.content.split("\n");
+        contentStory.choices[0].message.content.split("\n");
 
       const storieDTO = new StorieDTO(
         params,
@@ -41,7 +41,7 @@ module.exports = class StorieController {
         slug
       );
 
-      const imageDTO = new ImageDTO(params, formattedDate, slug, urlImage)
+      const imageDTO = new ImageDTO(params, formattedDate, slug, urlImage);
 
       const result = await StorieService.createStorie(storieDTO, imageDTO);
 

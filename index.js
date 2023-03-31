@@ -18,14 +18,10 @@ app.post("/story/insert", async (req, res) => {
   res.send("Dados inseridos com sucesso!");
 });
 
-
 // add a listener for the 'error' event
 myEmitter.on('error', (err) => {
   console.error('Error occurred:', err);
 });
-
-// emit an error event
-myEmitter.emit('error', new Error('Something went wrong!'));
 
 // Iniciar o servidor
 const port = process.env.PORT || 3000;
