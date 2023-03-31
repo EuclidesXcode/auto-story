@@ -1,15 +1,24 @@
-const mysql = require('mysql2');
+const mysql = require("mysql");
 
 const connection = mysql.createConnection({
-  host: '107.190.131.154',
-    user: 'eucode',
-    password: '@cod3R00t',
-    database: 'wp_nhczh'
-  });
+  host: "107.190.131.154",
+  user: "eucode",
+  password: "@cod3R00t",
+  database: "wp_nhczh",
+});
 
 class StorieService {
   static async createStorie(storyDto, imageDto) {
     try {
+      connection.connect((err) => {
+        if (err) {
+          console.error("Erro ao conectar ao banco de dados: ", err);
+          return;
+        }
+
+        console.log("Conectado ao banco de dados!");
+      });
+
       // Inserindo o storu
       const sqlStory = `INSERT INTO 1Yx5s_posts (
         post_author,
@@ -60,9 +69,10 @@ class StorieService {
       ];
 
       // Executando a instrução SQL
-      await connection.query(sqlStory, valuesStory, (error, result) => {
+      connection.query(sqlStory, valuesStory, (error, result) => {
         if (error) throw error;
 
+        connection.end();
         console.log("RESULT DO STORY: ", result);
 
         const insertImage = StorieService.insertImageCover(
@@ -81,6 +91,14 @@ class StorieService {
     console.log("ID DO STORY: ", storyId);
 
     try {
+      connection.connect((err) => {
+        if (err) {
+          console.error("Erro ao conectar ao banco de dados: ", err);
+          return;
+        }
+
+        console.log("Conectado ao banco de dados!");
+      });
       // Inserindo a imagem de capa
       const sqlImage = `INSERT INTO 1Yx5s_posts (
         post_author,
@@ -119,11 +137,11 @@ class StorieService {
       ];
 
       // Executando a instrução SQL
-      await connection.query(sqlImage, valuesImage, (error, result) => {
+      connection.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
         console.log("RESULT DA IMAGEM: ", result);
-
+        connection.end();
         return result;
       });
     } catch (err) {
