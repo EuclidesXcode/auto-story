@@ -72,7 +72,6 @@ class StorieService {
       connection.query(sqlStory, valuesStory, (error, result) => {
         if (error) throw error;
 
-        connection.end();
         console.log("RESULT DO STORY: ", result);
 
         const insertImage = StorieService.insertImageCover(
@@ -91,14 +90,6 @@ class StorieService {
     console.log("ID DO STORY: ", storyId);
 
     try {
-      connection.connect((err) => {
-        if (err) {
-          console.error("Erro ao conectar ao banco de dados: ", err);
-          return;
-        }
-
-        console.log("Conectado ao banco de dados!");
-      });
       // Inserindo a imagem de capa
       const sqlImage = `INSERT INTO 1Yx5s_posts (
         post_author,
