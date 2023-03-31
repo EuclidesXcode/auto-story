@@ -1,4 +1,4 @@
-const connection = require("../config/db-connect");
+const ConnectionToDatabase = require("../config/db-connect");
 
 class StorieService {
   static async createStorie(storyDto, imageDto) {
@@ -53,7 +53,7 @@ class StorieService {
       ];
 
       // Executando a instrução SQL
-      await connection.query(sqlStory, valuesStory, (error, result) => {
+      await ConnectionToDatabase.conectionMysql.query(sqlStory, valuesStory, (error, result) => {
         if (error) throw error;
 
         console.log("RESULT DO STORY: ", result);
@@ -112,7 +112,7 @@ class StorieService {
       ];
 
       // Executando a instrução SQL
-      await connection.query(sqlImage, valuesImage, (error, result) => {
+      await ConnectionToDatabase.conectionMysql.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
         console.log("RESULT DA IMAGEM: ", result);

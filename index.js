@@ -2,8 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const StorieController = require("./controller/storie-controller");
-const EventEmitter = require('events');
-const myEmitter = new EventEmitter();
 
 const app = express();
 
@@ -18,9 +16,8 @@ app.post("/story/insert", async (req, res) => {
   res.send("Dados inseridos com sucesso!");
 });
 
-// add a listener for the 'error' event
-myEmitter.on('error', (err) => {
-  console.error('Error occurred:', err);
+process.on('uncaughtException', function (err) {
+  console.error('Erro não tratado:', err.stack);
 });
 
 // Iniciar o servidor
