@@ -27,11 +27,9 @@ module.exports = class StorieController {
       const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
       const contentStory = await GPTService.generateContentStory(params.title);
-      const tags = await GPTService.generateTags(params.title);
+      // const tags = await GPTService.generateTags(params.title);
 
       const urlImage = 'https://i.ytimg.com/vi/mTYZ3Lj71c0/maxresdefault.jpg'  //GoogleSearch.getImageByTitle(params.title)
-
-      console.log("TAGS GERADAS PELO GPT: ", tags)
 
       const contentArrayByChatGPT =
       contentStory.choices[0].message.content.split("\n");
