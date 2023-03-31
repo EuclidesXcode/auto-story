@@ -60,7 +60,7 @@ class StorieService {
 
         console.log("RESULT DO STORY: ", result)
 
-        const insertImage = StorieService.insertImageCover(result.ResultSetHeader.insertId)
+        const insertImage = StorieService.insertImageCover(result.insertId)
 
         console.log("INSERIU A IMAGEM: ", insertImage)
       });
@@ -75,7 +75,7 @@ class StorieService {
   static async insertImageCover(storyId) {
     
     console.log("ID DO STORY: ", storyId)
-    
+
     try{
 
       // Inserindo a imagem de capa
