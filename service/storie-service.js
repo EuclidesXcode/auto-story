@@ -55,11 +55,28 @@ class StorieService {
       ];
 
       // Executando a instrução SQL
-      connection.query(sqlStory, valuesStory, (error, result) => {
+      await connection.query(sqlStory, valuesStory, (error, result) => {
         if (error) throw error;
 
         console.log("RESULT DO STORY: ", result)
+
+        const insertImage = StorieService.insertImageCover(result.ResultSetHeader.insertId)
+
+        console.log("INSERIU A IMAGEM: ", insertImage)
       });
+
+    } catch (err) {
+
+      console.error("Error, storie not created: ", err);
+
+    }
+  }
+
+  static async insertImageCover(storyId) {
+    
+    console.log("ID DO STORY: ", storyId)
+    
+    try{
 
       // Inserindo a imagem de capa
       const sqlImage = `INSERT INTO 1Yx5s_posts (
@@ -99,15 +116,16 @@ class StorieService {
       ];
 
       // Executando a instrução SQL
-      connection.query(sqlImage, valuesImage, (error, result) => {
+      await connection.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
         console.log("RESULT DA IMAGEM: ", result)
+
+        return result
       });
-    } catch (err) {
 
-      console.error("Error, storie not created: ", err);
-
+    } catch(err) {
+      console.error("Error on isert image cover: ", err)
     }
   }
 }
