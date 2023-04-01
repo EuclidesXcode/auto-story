@@ -24,10 +24,10 @@ app.post("/story/insert", async (req, res) => {
   console.log("Resultado GERAL: ", result);
   if (result && result !== undefined) {
     connection.end();
-    res.send("Dados inseridos com sucesso!: ", result);
+    res.status("Dados inseridos com sucesso!: ").send(result);
   } else {
     connection.end();
-    res.send("Dados não inseridos!: ", result);
+    res.status("Dados não inseridos!: ").send(result);
   }
 });
 
