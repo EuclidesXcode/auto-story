@@ -80,6 +80,8 @@ class StoryService {
       connection.query(sqlStory, valuesStory, (error, result) => {
         if (error) throw error;
 
+        console.log("[service-create-story] Success: ao inserir story");
+
         StoryService.insertImageCover(result.insertId, imageDto);
       });
     } catch (err) {

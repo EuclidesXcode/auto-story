@@ -22,6 +22,7 @@ app.post("/story/insert", async (req, res) => {
   const result = await StorieController.createStory(req.body);
 
   console.log("Resultado GERAL: ", result);
+  
   if (result && result !== undefined) {
     connection.end();
     res.status("Dados inseridos com sucesso!: ").send(result);
