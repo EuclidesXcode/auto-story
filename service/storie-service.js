@@ -137,6 +137,7 @@ class StoryService {
       connection.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
+        console.log("[service-insert-image-cover] Success: ao inserir imagem de capa");
         return result;
       });
     } catch (err) {
