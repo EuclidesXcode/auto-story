@@ -22,7 +22,7 @@ app.post("/story/insert", async (req, res) => {
   const result = await StorieController.createStory(req.body);
 
   console.log("Resultado GERAL: ", result);
-
+  
   if (result && result !== undefined) {
     connection.end();
     res.status("Dados inseridos com sucesso!: ").send(result);
@@ -32,9 +32,9 @@ app.post("/story/insert", async (req, res) => {
   }
 });
 
-// process.on("uncaughtException", function (err) {
-//   console.error("Erro não tratado:", err.stack);
-// });
+process.on("uncaughtException", function (err) {
+  console.error("Generic error: ", err.stack);
+});
 
 // Iniciar o servidor
 const port = process.env.PORT || 3000;
