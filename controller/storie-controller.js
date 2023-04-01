@@ -5,6 +5,9 @@ const GPTService = require("../service/gpt-service");
 // const GoogleSearch = require("../service/google-search");
 
 module.exports = class StorieController {
+  /**
+   * @param {params} param payload do post editado para a criação do story
+   */
   static async createStory(params) {
     try {
       const timestamp = new Date().getTime(); // timestamp atual
@@ -46,7 +49,6 @@ module.exports = class StorieController {
       const result = await StorieService.createStory(storieDTO, imageDTO);
 
       return result;
-
     } catch (err) {
       console.error("[controller-validade] Error: ", err);
     }

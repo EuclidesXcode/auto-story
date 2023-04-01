@@ -1,5 +1,4 @@
 const mysql = require("mysql");
-
 const connection = mysql.createConnection({
   host: "107.190.131.154",
   user: "eucode",
@@ -7,13 +6,20 @@ const connection = mysql.createConnection({
   database: "wp_nhczh",
 });
 
-class StorieService {
+class StoryService {
+  /**
+   * @param {storyDto} param dto para payload do story
+   * @param {imageDto} param dto do payload da imagem de capa
+   */
   static async createStory(storyDto, imageDto) {
     try {
       if (connection.state === "disconnected") {
         connection.connect((err) => {
           if (err) {
-            console.error("[service-create-story] Error: database connection error ", err);
+            console.error(
+              "[service-create-story] Error: database connection error ",
+              err
+            );
             return;
           }
 
@@ -74,18 +80,19 @@ class StorieService {
       connection.query(sqlStory, valuesStory, (error, result) => {
         if (error) throw error;
 
-        const insertImage = StorieService.insertImageCover(
-          result.insertId,
-          imageDto
-        );
+        StoryService.insertImageCover(result.insertId, imageDto);
       });
     } catch (err) {
       console.error("[service-create-story] Error, storie not created: ", err);
     }
   }
 
-  static async insertImageCover(storyId, imageDto) {
-
+  /**
+   * @param {storyId} param id do story inserido
+   * @param {imageDto} param dto do payload da imagem de capa
+   * @returns {Object} Retorno de um obijeto contendo o id
+   */
+  static async insertImageCover(_, imageDto) {
     try {
       // Inserindo a imagem de capa
       const sqlImage = `INSERT INTO 1Yx5s_posts (
@@ -131,9 +138,12 @@ class StorieService {
         return result;
       });
     } catch (err) {
-      console.error("[service-insert-image-cover]Error on isert image cover: ", err);
+      console.error(
+        "[service-insert-image-cover]Error on isert image cover: ",
+        err
+      );
     }
   }
 }
 
-module.exports = StorieService;
+module.exports = StoryService;

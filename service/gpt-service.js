@@ -1,6 +1,10 @@
 const axios = require("axios");
 
 class GPTService {
+  /**
+   * @param {title} param titulo do story
+   * @returns {Object} Retorno de um obijeto contendo os 7 paragrafos
+   */
   static async generateContentStory(title) {
     try {
       const url = "https://api.openai.com/v1/chat/completions";
@@ -22,10 +26,17 @@ class GPTService {
 
       return response.data;
     } catch (err) {
-      console.error("Error on generate Content Story: ", err);
+      console.error(
+        "[gpt-service-generate-content-story] Error on generate Content Story: ",
+        err
+      );
     }
   }
 
+  /**
+   * @param {title} param titulo do story
+   * @returns {Object} Retorno de um obijeto contendo as 10 tags
+   */
   static async generateTags(title) {
     try {
       const url = "https://api.openai.com/v1/chat/completions";
@@ -47,7 +58,10 @@ class GPTService {
 
       return response.data;
     } catch (err) {
-      console.error("Error on generate Tags for Taxinomies: ", err);
+      console.error(
+        "[gpt-service-generate-tags] Error on generate Tags for Taxinomies: ",
+        err
+      );
     }
   }
 }
