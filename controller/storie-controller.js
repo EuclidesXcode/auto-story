@@ -2,10 +2,10 @@ const StorieDTO = require("../dto/storie-dto");
 const ImageDTO = require("../dto/image-dto");
 const StorieService = require("../service/storie-service");
 const GPTService = require("../service/gpt-service");
-const GoogleSearch = require("../service/google-search");
+// const GoogleSearch = require("../service/google-search");
 
 module.exports = class StorieController {
-  static async validade(params) {
+  static async createStory(params) {
     try {
       const timestamp = new Date().getTime(); // timestamp atual
       const dateObj = new Date(timestamp); // objeto Date a partir do timestamp
@@ -43,11 +43,12 @@ module.exports = class StorieController {
 
       const imageDTO = new ImageDTO(params, formattedDate, slug, urlImage);
 
-      const result = await StorieService.createStorie(storieDTO, imageDTO);
+      const result = await StorieService.createStory(storieDTO, imageDTO);
 
       return result;
+
     } catch (err) {
-      console.error("Controller Error: ", err);
+      console.error("[controller-validade] Error: ", err);
     }
   }
 };

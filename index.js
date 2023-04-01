@@ -2,6 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const StorieController = require("./controller/storie-controller");
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+  host: "107.190.131.154",
+  user: "eucode",
+  password: "@cod3R00t",
+  database: "wp_nhczh",
+});
 
 const app = express();
 
@@ -11,13 +19,16 @@ app.use(cors());
 
 // create story
 app.post("/story/insert", async (req, res) => {
-  await StorieController.validade(req.body);
+  const result = await StorieController.createStory(req.body);
 
-  res.send("Dados inseridos com sucesso!");
+  console.log("Resultado GERAL: ", result);
+  if (result) connection.end();
+
+  res.send("Dados inseridos com sucesso!: ", result);
 });
 
-process.on('uncaughtException', function (err) {
-  console.error('Erro não tratado:', err.stack);
+process.on("uncaughtException", function (err) {
+  console.error("Erro não tratado:", err.stack);
 });
 
 // Iniciar o servidor
@@ -25,4 +36,3 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
-

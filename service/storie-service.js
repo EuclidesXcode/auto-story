@@ -8,16 +8,16 @@ const connection = mysql.createConnection({
 });
 
 class StorieService {
-  static async createStorie(storyDto, imageDto) {
+  static async createStory(storyDto, imageDto) {
     try {
       if (connection.state === "disconnected") {
         connection.connect((err) => {
           if (err) {
-            console.error("Erro ao conectar ao banco de dados: ", err);
+            console.error("[service-create-story] Error: database connection error ", err);
             return;
           }
 
-          console.log("Conectado ao banco de dados!");
+          console.log("[service-create-story] Success: database connected");
         });
       }
 
@@ -74,22 +74,17 @@ class StorieService {
       connection.query(sqlStory, valuesStory, (error, result) => {
         if (error) throw error;
 
-        console.log("RESULT DO STORY: ", result);
-
         const insertImage = StorieService.insertImageCover(
           result.insertId,
           imageDto
         );
-
-        console.log("INSERIU A IMAGEM: ", insertImage);
       });
     } catch (err) {
-      console.error("Error, storie not created: ", err);
+      console.error("[service-create-story] Error, storie not created: ", err);
     }
   }
 
   static async insertImageCover(storyId, imageDto) {
-    console.log("ID DO STORY: ", storyId);
 
     try {
       // Inserindo a imagem de capa
@@ -133,11 +128,10 @@ class StorieService {
       connection.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
-        console.log("RESULT DA IMAGEM: ", result);
         return result;
       });
     } catch (err) {
-      console.error("Error on isert image cover: ", err);
+      console.error("[service-insert-image-cover]Error on isert image cover: ", err);
     }
   }
 }
