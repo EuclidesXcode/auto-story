@@ -49,7 +49,8 @@ module.exports = class StorieController {
         params,
         formattedDate,
         contentArrayByChatGPT,
-        slug
+        slug,
+        imageFind
       );
 
       const imageDTO = new ImageDTO(params, formattedDate, slug, imageFind);
