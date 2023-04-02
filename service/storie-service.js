@@ -94,7 +94,7 @@ class StoryService {
    * @param {imageDto} param dto do payload da imagem de capa
    * @returns {Object} Retorno de um obijeto contendo o id
    */
-  static async insertImageCover(_, imageDto) {
+  static async insertImageCover(storyId, imageDto) {
     try {
       // Inserindo a imagem de capa
       const sqlImage = `INSERT INTO 1Yx5s_posts (
@@ -137,8 +137,7 @@ class StoryService {
       connection.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
-        console.log("[service-insert-image-cover] Success: ao inserir imagem de capa");
-        return result;
+        StoryService.relateImageToStory(result.insertId, storyId);
       });
     } catch (err) {
       console.error(
@@ -146,6 +145,20 @@ class StoryService {
         err
       );
     }
+  }
+
+  static async relateImageToStory(storyId, imageId) {
+    const sqlRelationship = `INSERT INTO 1Yx5s_posts (
+      post_id, meta_key, meta_value
+      ) VALUES (?, ?, ?)`;
+    const valuesRelationship = [storyId, "_thumbnail_id", imageId];
+
+    // Executando a instrução SQL
+    connection.query(sqlRelationship, valuesRelationship, (error, result) => {
+      if (error) throw error;
+
+      console.log("Relacionamento feito com sucesso!")
+    });
   }
 }
 
