@@ -147,7 +147,7 @@ class StoryService {
     }
   }
 
-  static async relateImageToStory(storyId, imageId) {
+  static async relateImageToStory(imageId, storyId) {
     const sqlRelationship = `INSERT INTO 1Yx5s_postmeta (
       post_id, meta_key, meta_value
       ) VALUES (?, ?, ?)`;
