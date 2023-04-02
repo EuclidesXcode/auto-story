@@ -97,7 +97,7 @@ class StoryService {
   static async insertImageCover(storyId, imageDto) {
     try {
       // Inserindo a imagem de capa
-      const sqlImage = `INSERT INTO 1Yx5s_posts (
+      const sqlImage = `INSERT INTO 1Yx5s_postmeta (
         post_author,
         post_date,
         post_date_gmt,
