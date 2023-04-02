@@ -2,7 +2,7 @@ const StorieDTO = require("../dto/storie-dto");
 const ImageDTO = require("../dto/image-dto");
 const StorieService = require("../service/storie-service");
 const GPTService = require("../service/gpt-service");
-// const GoogleSearch = require("../service/google-search");
+const GoogleSearch = require("../service/google-search");
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
