@@ -2,19 +2,18 @@ const mysql = require("mysql");
 
 const connection = mysql.createConnection({
   host: "107.190.131.154",
-  user: "eucodeDB",
-  password: "Gattes@2013",
+  user: "wp_eucode",
+  password: "superR00t@@",
   database: "auto-story",
 });
 
 class StoryService {
-
   constructor(storyDto, imageDto) {
-    this.storyDTO = storyDto
-    this.imageDTO = imageDto
-    this.storyId = null
-    this.imageId = null
-    this.taxonomyId = null
+    this.storyDTO = storyDto;
+    this.imageDTO = imageDto;
+    this.storyId = null;
+    this.imageId = null;
+    this.taxonomyId = null;
   }
 
   /**
@@ -92,8 +91,8 @@ class StoryService {
 
         console.log("[service-create-story] Success: ao inserir story");
 
-        this.storyId = result.insertId
-        
+        this.storyId = result.insertId;
+
         StoryService.insertImageCover();
       });
     } catch (err) {
@@ -149,7 +148,7 @@ class StoryService {
       connection.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
-        this.imageId = result.insertId
+        this.imageId = result.insertId;
 
         StoryService.relateImageToStory();
       });
@@ -171,32 +170,29 @@ class StoryService {
     connection.query(sqlRelationship, valuesRelationship, (error, result) => {
       if (error) throw error;
 
-      console.log("Relacionamento feito com sucesso: ", result)
+      console.log("Relacionamento feito com sucesso: ", result);
 
-      StoryService.createTaxonomy()
+      StoryService.createTaxonomy();
     });
   }
 
   static async createTaxonomy() {
-
     const sqlTaxonomy = `INSERT INTO 1Yx5s_terms (
       name, slug, term_group
       ) VALUES (?, ?, ?)`;
-    const valuesTaxonomy = ['teste de categoria', 'teste-de-categoria', 0];
+    const valuesTaxonomy = ["teste de categoria", "teste-de-categoria", 0];
 
     // Executando a instrução SQL
     connection.query(sqlTaxonomy, valuesTaxonomy, (error, result) => {
       if (error) throw error;
 
-      this.taxonomyId = result.insertId
+      this.taxonomyId = result.insertId;
 
-      StoryService.createRelationshipToTaxonomy()
+      StoryService.createRelationshipToTaxonomy();
     });
-
   }
 
   static async createRelationshipToTaxonomy() {
-
     const sqlTaxonomy = `INSERT INTO 1Yx5s_term_relationships (
       object_id, term_taxonomy_id, term_order
       ) VALUES (?, ?, ?)`;
@@ -206,12 +202,9 @@ class StoryService {
     connection.query(sqlTaxonomy, valuesTaxonomy, (error, result) => {
       if (error) throw error;
 
-      this.taxonomyId = result.insertId
+      this.taxonomyId = result.insertId;
     });
-
   }
-
-
 }
 
 module.exports = StoryService;
