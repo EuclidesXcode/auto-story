@@ -15,7 +15,7 @@ module.exports = class ImageDTO {
         this.post_parent = 0,
         this.guid = urlImage || "https://i.ytimg.com/vi/mTYZ3Lj71c0/maxresdefault.jpg",
         this.post_type = "attachment",
-        this.post_mime_type = "image/jpeg",
+        this.post_mime_type = "image/jpeg"
     }
   };
   
