@@ -40,7 +40,7 @@ module.exports = class StorieController {
       const contentStory = await GPTService.generateContentStory(params.title);
       // const tags = await GPTService.generateTags(params.title);
 
-      const urlImage = "https://i.ytimg.com/vi/mTYZ3Lj71c0/maxresdefault.jpg"; //GoogleSearch.getImageByTitle(params.title)
+      const urlImage = GoogleSearch.getImageByTitle(params.title)
 
       const contentArrayByChatGPT =
         contentStory.choices[0].message.content.split("\n");
