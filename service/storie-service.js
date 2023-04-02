@@ -2,9 +2,9 @@ const mysql = require("mysql");
 
 const connection = mysql.createConnection({
   host: "107.190.131.154",
-  user: "api_eucode",
-  password: "@cod3R00t",
-  database: "wp_nhczh",
+  user: "eucodeDB",
+  password: "Gattes@2013",
+  database: "auto-story",
 });
 
 class StoryService {
