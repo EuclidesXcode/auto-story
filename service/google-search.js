@@ -1,35 +1,29 @@
 require("dotenv").config();
-// const { google } = require("googleapis");
-// const customsearch = google.customsearch("v1");
 
-const GoogleImages = require('google-images');
-const API_KEY_GOOGLE_CLOUD = process.env.API_KEY_GOOGLE_CLOUD;
-const API_ID_CLIENT_GOOGLE = process.env.API_ID_CLIENT_GOOGLE;
-const client = new GoogleImages(API_ID_CLIENT_GOOGLE, API_KEY_GOOGLE_CLOUD);
+const GoogleImages = require("google-images");
 
 class GoogleService {
   static async getImageByTitle(title) {
     try {
+      const API_KEY_GOOGLE_CLOUD = process.env.API_KEY_GOOGLE_CLOUD;
+      const API_ID_CLIENT_GOOGLE = process.env.API_ID_CLIENT_GOOGLE;
 
-      const response = await client.search(title)
+      const client = new GoogleImages(
+        API_ID_CLIENT_GOOGLE,
+        API_KEY_GOOGLE_CLOUD
+      );
 
-      console.log("como vem o retorno do google: ", response)
-      // if (response.data.items && response.data.items.length > 0) {
-      //   console.log(
-      //     "Aqui está o link da imagem: ",
-      //     response
-      //   );
+      const response = await client.search(title);
 
-        return response
-      // } else {
-      //   return null;
-      // }
+      return response;
+      
     } catch (err) {
       console.error(
         "[google-service-get-image-by-title] Error on get google image URL: ",
         err
       );
-    }ƒ
+    }
+    ƒ;
   }
 }
 

@@ -24,8 +24,6 @@ class GPTService {
 
       const response = await axios.post(url, data, { headers });
 
-      console.log("[gpt-service-generate-content-story] sucesso GPT: ", response)
-
       return response.data;
     } catch (err) {
       console.error(
