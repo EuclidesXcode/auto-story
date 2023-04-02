@@ -3,7 +3,7 @@ module.exports = class ImageDTO {
         this.post_author = 1,
         this.post_date = formattedDate,
         this.post_date_gmt = formattedDate,
-        this.post_content = image && image.url, 
+        this.post_content = image[0].url, 
         this.post_title = params.title,
         this.post_excerpt = params.excerpt,
         this.post_status = "inherit",
@@ -13,9 +13,9 @@ module.exports = class ImageDTO {
         this.post_modified = formattedDate,
         this.post_modified_gmt = formattedDate,
         this.post_parent = 0,
-        this.guid = image && image.url,
+        this.guid = image[0].url,
         this.post_type = "attachment",
-        this.post_mime_type = image && image.type
+        this.post_mime_type = image[0].type
     }
   };
   

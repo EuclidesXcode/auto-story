@@ -40,7 +40,7 @@ module.exports = class StorieController {
       const contentStory = await GPTService.generateContentStory(params.title);
       // const tags = await GPTService.generateTags(params.title);
 
-      const urlImage = await GoogleService.getImageByTitle(params.title)
+      const imageFind = await GoogleService.getImageByTitle(params.title)
 
       const contentArrayByChatGPT =
         contentStory.choices[0].message.content.split("\n");
@@ -52,7 +52,7 @@ module.exports = class StorieController {
         slug
       );
 
-      const imageDTO = new ImageDTO(params, formattedDate, slug, urlImage);
+      const imageDTO = new ImageDTO(params, formattedDate, slug, imageFind);
 
       const result = await StorieService.createStory(storieDTO, imageDTO);
 
