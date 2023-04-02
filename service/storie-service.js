@@ -97,7 +97,7 @@ class StoryService {
   static async insertImageCover(storyId, imageDto) {
     try {
       // Inserindo a imagem de capa
-      const sqlImage = `INSERT INTO 1Yx5s_postmeta (
+      const sqlImage = `INSERT INTO 1Yx5s_posts (
         post_author,
         post_date,
         post_date_gmt,
@@ -148,7 +148,7 @@ class StoryService {
   }
 
   static async relateImageToStory(storyId, imageId) {
-    const sqlRelationship = `INSERT INTO 1Yx5s_posts (
+    const sqlRelationship = `INSERT INTO 1Yx5s_postmeta (
       post_id, meta_key, meta_value
       ) VALUES (?, ?, ?)`;
     const valuesRelationship = [storyId, "_thumbnail_id", imageId];
