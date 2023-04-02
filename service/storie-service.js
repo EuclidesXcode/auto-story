@@ -1,17 +1,26 @@
 const mysql = require("mysql");
 const connection = mysql.createConnection({
   host: "107.190.131.154",
-  user: "eucode",
-  password: "@cod3R00t",
-  database: "wp_nhczh",
+  user: "eucodeDB",
+  password: "Gattes@2013",
+  database: "auto-story",
 });
 
 class StoryService {
+
+  constructor(storyDto, imageDto) {
+    this.storyDTO = storyDto
+    this.imageDTO = imageDto
+    this.storyId = null
+    this.imageId = null
+    this.taxonomyId = null
+  }
+
   /**
    * @param {storyDto} param dto para payload do story
    * @param {imageDto} param dto do payload da imagem de capa
    */
-  static async createStory(storyDto, imageDto) {
+  static async createStory() {
     try {
       if (connection.state === "disconnected") {
         connection.connect((err) => {
@@ -52,28 +61,28 @@ class StoryService {
         post_mime_type,
         comment_count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
       const valuesStory = [
-        storyDto.post_author,
-        storyDto.post_date,
-        storyDto.post_date_gmt,
-        storyDto.post_content,
-        storyDto.post_title,
-        storyDto.post_excerpt,
-        storyDto.post_status,
-        storyDto.comment_status,
-        storyDto.ping_status,
-        storyDto.post_password,
-        storyDto.post_name,
-        storyDto.to_ping,
-        storyDto.pinged,
-        storyDto.post_modified,
-        storyDto.post_modified_gmt,
-        storyDto.post_content_filtered,
-        storyDto.post_parent,
-        storyDto.guid,
-        storyDto.menu_order,
-        storyDto.post_type,
-        storyDto.post_mime_type,
-        storyDto.comment_count,
+        this.storyDTO.post_author,
+        this.storyDTO.post_date,
+        this.storyDTO.post_date_gmt,
+        this.storyDTO.post_content,
+        this.storyDTO.post_title,
+        this.storyDTO.post_excerpt,
+        this.storyDTO.post_status,
+        this.storyDTO.comment_status,
+        this.storyDTO.ping_status,
+        this.storyDTO.post_password,
+        this.storyDTO.post_name,
+        this.storyDTO.to_ping,
+        this.storyDTO.pinged,
+        this.storyDTO.post_modified,
+        this.storyDTO.post_modified_gmt,
+        this.storyDTO.post_content_filtered,
+        this.storyDTO.post_parent,
+        this.storyDTO.guid,
+        this.storyDTO.menu_order,
+        this.storyDTO.post_type,
+        this.storyDTO.post_mime_type,
+        this.storyDTO.comment_count,
       ];
 
       // Executando a instrução SQL
@@ -82,7 +91,9 @@ class StoryService {
 
         console.log("[service-create-story] Success: ao inserir story");
 
-        StoryService.insertImageCover(result.insertId, imageDto);
+        this.storyId = result.insertId
+        
+        StoryService.insertImageCover();
       });
     } catch (err) {
       console.error("[service-create-story] Error, storie not created: ", err);
@@ -94,7 +105,7 @@ class StoryService {
    * @param {imageDto} param dto do payload da imagem de capa
    * @returns {Object} Retorno de um obijeto contendo o id
    */
-  static async insertImageCover(storyId, imageDto) {
+  static async insertImageCover() {
     try {
       // Inserindo a imagem de capa
       const sqlImage = `INSERT INTO 1Yx5s_posts (
@@ -115,29 +126,31 @@ class StoryService {
         post_type,
         post_mime_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
       const valuesImage = [
-        imageDto.post_author,
-        imageDto.post_date,
-        imageDto.post_date_gmt,
-        imageDto.post_content,
-        imageDto.post_title,
-        imageDto.post_excerpt,
-        imageDto.post_status,
-        imageDto.comment_status,
-        imageDto.ping_status,
-        imageDto.post_name,
-        imageDto.post_modified,
-        imageDto.post_modified_gmt,
-        imageDto.post_parent,
-        imageDto.guid,
-        imageDto.post_type,
-        imageDto.post_mime_type,
+        this.imageDTO.post_author,
+        this.imageDTO.post_date,
+        this.imageDTO.post_date_gmt,
+        this.imageDTO.post_content,
+        this.imageDTO.post_title,
+        this.imageDTO.post_excerpt,
+        this.imageDTO.post_status,
+        this.imageDTO.comment_status,
+        this.imageDTO.ping_status,
+        this.imageDTO.post_name,
+        this.imageDTO.post_modified,
+        this.imageDTO.post_modified_gmt,
+        this.imageDTO.post_parent,
+        this.imageDTO.guid,
+        this.imageDTO.post_type,
+        this.imageDTO.post_mime_type,
       ];
 
       // Executando a instrução SQL
       connection.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
-        StoryService.relateImageToStory(result.insertId, storyId);
+        this.imageId = result.insertId
+
+        StoryService.relateImageToStory();
       });
     } catch (err) {
       console.error(
@@ -147,19 +160,57 @@ class StoryService {
     }
   }
 
-  static async relateImageToStory(imageId, storyId) {
+  static async relateImageToStory() {
     const sqlRelationship = `INSERT INTO 1Yx5s_postmeta (
       post_id, meta_key, meta_value
       ) VALUES (?, ?, ?)`;
-    const valuesRelationship = [storyId, "_thumbnail_id", imageId];
+    const valuesRelationship = [this.storyId, "_thumbnail_id", this.imageId];
 
     // Executando a instrução SQL
     connection.query(sqlRelationship, valuesRelationship, (error, result) => {
       if (error) throw error;
 
-      console.log("Relacionamento feito com sucesso!")
+      console.log("Relacionamento feito com sucesso: ", result)
+
+      StoryService.createTaxonomy()
     });
   }
+
+  static async createTaxonomy() {
+
+    const sqlTaxonomy = `INSERT INTO 1Yx5s_terms (
+      name, slug, term_group
+      ) VALUES (?, ?, ?)`;
+    const valuesTaxonomy = ['teste de categoria', 'teste-de-categoria', 0];
+
+    // Executando a instrução SQL
+    connection.query(sqlTaxonomy, valuesTaxonomy, (error, result) => {
+      if (error) throw error;
+
+      this.taxonomyId = result.insertId
+
+      StoryService.createRelationshipToTaxonomy()
+    });
+
+  }
+
+  static async createRelationshipToTaxonomy() {
+
+    const sqlTaxonomy = `INSERT INTO 1Yx5s_term_relationships (
+      object_id, term_taxonomy_id, term_order
+      ) VALUES (?, ?, ?)`;
+    const valuesTaxonomy = [this.storyId, 10, 0];
+
+    // Executando a instrução SQL
+    connection.query(sqlTaxonomy, valuesTaxonomy, (error, result) => {
+      if (error) throw error;
+
+      this.taxonomyId = result.insertId
+    });
+
+  }
+
+
 }
 
 module.exports = StoryService;
