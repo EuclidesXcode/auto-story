@@ -13,10 +13,15 @@ class GoogleService {
         API_KEY_GOOGLE_CLOUD
       );
 
-      const response = await client.search(title);
+      const response = await client.search(title, {
+        size: "large",
+        page: 2
+      });
+
+      console.log("RESULTADOS GOOGLE: ", response)
 
       return response;
-      
+
     } catch (err) {
       console.error(
         "[google-service-get-image-by-title] Error on get google image URL: ",
