@@ -4,7 +4,7 @@ const connection = mysql.createConnection({
   host: "107.190.131.154",
   user: "eucode",
   password: "@cod3R00t",
-  database: "auto-story",
+  database: "wp_nhczh",
 });
 
 class StoryService {
