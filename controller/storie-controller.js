@@ -2,7 +2,7 @@ const StorieDTO = require("../dto/storie-dto");
 const ImageDTO = require("../dto/image-dto");
 const StorieService = require("../service/storie-service");
 const GPTService = require("../service/gpt-service");
-const GoogleSearch = require("../service/google-search");
+const GoogleService = require("../service/google-search");
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
@@ -40,7 +40,7 @@ module.exports = class StorieController {
       const contentStory = await GPTService.generateContentStory(params.title);
       // const tags = await GPTService.generateTags(params.title);
 
-      const urlImage = GoogleSearch.getImageByTitle(params.title)
+      const urlImage = await GoogleService.getImageByTitle(params.title)
 
       const contentArrayByChatGPT =
         contentStory.choices[0].message.content.split("\n");

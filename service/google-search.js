@@ -7,7 +7,7 @@ const API_KEY_GOOGLE_CLOUD = process.env.API_KEY_GOOGLE_CLOUD;
 const API_ID_CLIENT_GOOGLE = process.env.API_ID_CLIENT_GOOGLE;
 const client = new GoogleImages(API_ID_CLIENT_GOOGLE, API_KEY_GOOGLE_CLOUD);
 
-class GoogleSearch {
+class GoogleService {
   static async getImageByTitle(title) {
     try {
 
@@ -29,8 +29,8 @@ class GoogleSearch {
         "[google-service-get-image-by-title] Error on get google image URL: ",
         err
       );
-    }
+    }ƒ
   }
 }
 
-module.exports = GoogleSearch;
+module.exports = GoogleService;
