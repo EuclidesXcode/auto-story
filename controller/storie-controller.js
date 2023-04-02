@@ -3,6 +3,14 @@ const ImageDTO = require("../dto/image-dto");
 const StorieService = require("../service/storie-service");
 const GPTService = require("../service/gpt-service");
 // const GoogleSearch = require("../service/google-search");
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+  host: "107.190.131.154",
+  user: "eucode",
+  password: "@cod3R00t",
+  database: "wp_nhczh",
+});
 
 module.exports = class StorieController {
   /**
@@ -47,6 +55,8 @@ module.exports = class StorieController {
       const imageDTO = new ImageDTO(params, formattedDate, slug, urlImage);
 
       const result = await StorieService.createStory(storieDTO, imageDTO);
+
+      connection.end();
 
       return result;
     } catch (err) {

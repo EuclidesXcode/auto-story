@@ -2,14 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const StorieController = require("./controller/storie-controller");
-const mysql = require("mysql");
-
-const connection = mysql.createConnection({
-  host: "107.190.131.154",
-  user: "eucode",
-  password: "@cod3R00t",
-  database: "wp_nhczh",
-});
 
 const app = express();
 
@@ -24,10 +16,8 @@ app.post("/story/insert", async (req, res) => {
   console.log("Resultado GERAL: ", result);
   
   if (result && result !== undefined) {
-    connection.end();
     res.status("Dados inseridos com sucesso!: ").send(result);
   } else {
-    connection.end();
     res.status("Dados não inseridos!: ").send(result);
   }
 });
