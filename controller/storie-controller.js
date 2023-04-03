@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
   host: "107.190.131.154",
   user: "eucode",
   password: "@cod3R00t",
-  database: "wp_nhczh",
+  database: "wp_off1i",
 });
 
 module.exports = class StorieController {
@@ -61,7 +61,7 @@ module.exports = class StorieController {
 
       return result;
     } catch (err) {
-      console.error("[controller-validade] Error: ", err);
+      console.error("[story-controller-create-story] Error: ", err);
     }
   }
 };
