@@ -2,9 +2,9 @@ const mysql = require("mysql");
 
 const connection = mysql.createConnection({
   host: "107.190.131.154",
-  user: "wp_eucode",
-  password: "superR00t@@",
-  database: "auto-story",
+  user: "eucode",
+  password: "@cod3R00t",
+  database: "wp_off1i",
 });
 
 class StoryService {
@@ -37,7 +37,7 @@ class StoryService {
       }
 
       // Inserindo o storu
-      const sqlStory = `INSERT INTO 1Yx5s_posts (
+      const sqlStory = `INSERT INTO dQMf2A_posts (
         post_author,
         post_date,
         post_date_gmt,
@@ -108,7 +108,7 @@ class StoryService {
   static async insertImageCover() {
     try {
       // Inserindo a imagem de capa
-      const sqlImage = `INSERT INTO 1Yx5s_posts (
+      const sqlImage = `INSERT INTO dQMf2A_posts (
         post_author,
         post_date,
         post_date_gmt,
@@ -161,7 +161,7 @@ class StoryService {
   }
 
   static async relateImageToStory() {
-    const sqlRelationship = `INSERT INTO 1Yx5s_postmeta (
+    const sqlRelationship = `INSERT INTO dQMf2A_postmeta (
       post_id, meta_key, meta_value
       ) VALUES (?, ?, ?)`;
     const valuesRelationship = [this.storyId, "_thumbnail_id", this.imageId];
@@ -177,7 +177,7 @@ class StoryService {
   }
 
   static async createTaxonomy() {
-    const sqlTaxonomy = `INSERT INTO 1Yx5s_terms (
+    const sqlTaxonomy = `INSERT INTO dQMf2A_terms (
       name, slug, term_group
       ) VALUES (?, ?, ?)`;
     const valuesTaxonomy = ["teste de categoria", "teste-de-categoria", 0];
@@ -193,7 +193,7 @@ class StoryService {
   }
 
   static async createRelationshipToTaxonomy() {
-    const sqlTaxonomy = `INSERT INTO 1Yx5s_term_relationships (
+    const sqlTaxonomy = `INSERT INTO dQMf2A_term_relationships (
       object_id, term_taxonomy_id, term_order
       ) VALUES (?, ?, ?)`;
     const valuesTaxonomy = [this.storyId, 10, 0];
