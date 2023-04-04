@@ -58,7 +58,18 @@ module.exports = class StorieController {
 
       const imageDTO = new ImageDTO(params, formattedDate, slug, imageFind);
 
-      const result = await StorieService.createStory(storieDTO, imageDTO);
+      const storyId = await StorieService.createStory(storieDTO);
+
+      const imageId = await StorieService.insertImageCover(storyId, imageDTO);
+
+      await StorieService.relateImageToStory(storyId, imageId);
+
+      const taxonomyId = await StorieService.createTaxonomy(storyId, imageId);
+
+      const taxonomyRelationId = await StorieService.createTaxonomy(storyId, taxonomyId);
+
+
+      console.log("id de relacionamento da taxonomia: ", taxonomyRelationId)
 
       connection.end();
 

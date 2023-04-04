@@ -8,15 +8,8 @@ const connection = mysql.createConnection({
 });
 
 class StoryService {
-  constructor(storyDto, imageDto) {
-    this.storyDTO = storyDto;
-    this.imageDTO = imageDto;
-    this.storyId = null;
-    this.imageId = null;
-    this.taxonomyId = null;
-  }
 
-  static async createStory() {
+  static async createStory(storyDto) {
     try {
       if (connection.state === "disconnected") {
         connection.connect((err) => {
@@ -31,8 +24,6 @@ class StoryService {
           console.log("[service-create-story] Success: database connected");
         });
       }
-
-      console.log("como esta o THIS >>>>>>>>>>> ", this.storyDTO.post_author)
 
       // Inserindo o storu
       const sqlStory = `INSERT INTO dQMf2A_posts (
@@ -59,28 +50,28 @@ class StoryService {
         post_mime_type,
         comment_count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
       const valuesStory = [
-        this.storyDTO.post_author,
-        this.storyDTO.post_date,
-        this.storyDTO.post_date_gmt,
-        this.storyDTO.post_content,
-        this.storyDTO.post_title,
-        this.storyDTO.post_excerpt,
-        this.storyDTO.post_status,
-        this.storyDTO.comment_status,
-        this.storyDTO.ping_status,
-        this.storyDTO.post_password,
-        this.storyDTO.post_name,
-        this.storyDTO.to_ping,
-        this.storyDTO.pinged,
-        this.storyDTO.post_modified,
-        this.storyDTO.post_modified_gmt,
-        this.storyDTO.post_content_filtered,
-        this.storyDTO.post_parent,
-        this.storyDTO.guid,
-        this.storyDTO.menu_order,
-        this.storyDTO.post_type,
-        this.storyDTO.post_mime_type,
-        this.storyDTO.comment_count,
+        storyDto.post_author,
+        storyDto.post_date,
+        storyDto.post_date_gmt,
+        storyDto.post_content,
+        storyDto.post_title,
+        storyDto.post_excerpt,
+        storyDto.post_status,
+        storyDto.comment_status,
+        storyDto.ping_status,
+        storyDto.post_password,
+        storyDto.post_name,
+        storyDto.to_ping,
+        storyDto.pinged,
+        storyDto.post_modified,
+        storyDto.post_modified_gmt,
+        storyDto.post_content_filtered,
+        storyDto.post_parent,
+        storyDto.guid,
+        storyDto.menu_order,
+        storyDto.post_type,
+        storyDto.post_mime_type,
+        storyDto.comment_count,
       ];
 
       // Executando a instrução SQL
@@ -89,16 +80,16 @@ class StoryService {
 
         console.log("[service-create-story] Success: ao inserir story");
 
-        this.storyId = result.insertId;
+        const storyId = result.insertId;
 
-        StoryService.insertImageCover();
+        return storyId;
       });
     } catch (err) {
       console.error("[service-create-story] Error, storie not created: ", err);
     }
   }
 
-  static async insertImageCover() {
+  static async insertImageCover(imageDTO) {
     try {
       // Inserindo a imagem de capa
       const sqlImage = `INSERT INTO dQMf2A_posts (
@@ -119,31 +110,31 @@ class StoryService {
         post_type,
         post_mime_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
       const valuesImage = [
-        this.imageDTO.post_author,
-        this.imageDTO.post_date,
-        this.imageDTO.post_date_gmt,
-        this.imageDTO.post_content,
-        this.imageDTO.post_title,
-        this.imageDTO.post_excerpt,
-        this.imageDTO.post_status,
-        this.imageDTO.comment_status,
-        this.imageDTO.ping_status,
-        this.imageDTO.post_name,
-        this.imageDTO.post_modified,
-        this.imageDTO.post_modified_gmt,
-        this.imageDTO.post_parent,
-        this.imageDTO.guid,
-        this.imageDTO.post_type,
-        this.imageDTO.post_mime_type,
+        imageDTO.post_author,
+        imageDTO.post_date,
+        imageDTO.post_date_gmt,
+        imageDTO.post_content,
+        imageDTO.post_title,
+        imageDTO.post_excerpt,
+        imageDTO.post_status,
+        imageDTO.comment_status,
+        imageDTO.ping_status,
+        imageDTO.post_name,
+        imageDTO.post_modified,
+        imageDTO.post_modified_gmt,
+        imageDTO.post_parent,
+        imageDTO.guid,
+        imageDTO.post_type,
+        imageDTO.post_mime_type,
       ];
 
       // Executando a instrução SQL
       connection.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
-        this.imageId = result.insertId;
+        const imageId = result.insertId;
 
-        StoryService.relateImageToStory();
+        return imageId;
       });
     } catch (err) {
       console.error(
@@ -153,11 +144,11 @@ class StoryService {
     }
   }
 
-  static async relateImageToStory() {
+  static async relateImageToStory(storyId, imageId) {
     const sqlRelationship = `INSERT INTO dQMf2A_postmeta (
       post_id, meta_key, meta_value
       ) VALUES (?, ?, ?)`;
-    const valuesRelationship = [this.storyId, "_thumbnail_id", this.imageId];
+    const valuesRelationship = [storyId, "_thumbnail_id", imageId];
 
     // Executando a instrução SQL
     connection.query(sqlRelationship, valuesRelationship, (error, result) => {
@@ -169,7 +160,7 @@ class StoryService {
     });
   }
 
-  static async createTaxonomy() {
+  static async createTaxonomy(_, _) {
     const sqlTaxonomy = `INSERT INTO dQMf2A_terms (
       name, slug, term_group
       ) VALUES (?, ?, ?)`;
@@ -179,23 +170,25 @@ class StoryService {
     connection.query(sqlTaxonomy, valuesTaxonomy, (error, result) => {
       if (error) throw error;
 
-      this.taxonomyId = result.insertId;
+      const taxonomyId = result.insertId;
 
-      StoryService.createRelationshipToTaxonomy();
+      return taxonomyId;
     });
   }
 
-  static async createRelationshipToTaxonomy() {
+  static async createRelationshipToTaxonomy(storyId, _) {
     const sqlTaxonomy = `INSERT INTO dQMf2A_term_relationships (
       object_id, term_taxonomy_id, term_order
       ) VALUES (?, ?, ?)`;
-    const valuesTaxonomy = [this.storyId, 10, 0];
+    const valuesTaxonomy = [storyId, 10, 0];
 
     // Executando a instrução SQL
     connection.query(sqlTaxonomy, valuesTaxonomy, (error, result) => {
       if (error) throw error;
 
-      this.taxonomyId = result.insertId;
+      const taxonomyRelationId = result.insertId;
+
+      return taxonomyRelationId
     });
   }
 }
