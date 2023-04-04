@@ -8,7 +8,6 @@ const connection = mysql.createConnection({
 });
 
 class StoryService {
-
   constructor(storyDto, imageDto) {
     this.storyDTO = storyDto;
     this.imageDTO = imageDto;
@@ -17,10 +16,6 @@ class StoryService {
     this.taxonomyId = null;
   }
 
-  /**
-   * @param {storyDto} param dto para payload do story
-   * @param {imageDto} param dto do payload da imagem de capa
-   */
   static async createStory() {
     try {
       if (connection.state === "disconnected") {
@@ -37,7 +32,8 @@ class StoryService {
         });
       }
 
-      console.log("THIS >>>>>> ", this.StoryService.storyDTO)
+      console.log("como esta o THIS >>>>>>>>>>> ", this.storyDTO.post_author)
+
       // Inserindo o storu
       const sqlStory = `INSERT INTO dQMf2A_posts (
         post_author,
@@ -63,28 +59,28 @@ class StoryService {
         post_mime_type,
         comment_count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
       const valuesStory = [
-        this.StoryService.storyDTO.post_author,
-        this.StoryService.storyDTO.post_date,
-        this.StoryService.storyDTO.post_date_gmt,
-        this.StoryService.storyDTO.post_content,
-        this.StoryService.storyDTO.post_title,
-        this.StoryService.storyDTO.post_excerpt,
-        this.StoryService.storyDTO.post_status,
-        this.StoryService.storyDTO.comment_status,
-        this.StoryService.storyDTO.ping_status,
-        this.StoryService.storyDTO.post_password,
-        this.StoryService.storyDTO.post_name,
-        this.StoryService.storyDTO.to_ping,
-        this.StoryService.storyDTO.pinged,
-        this.StoryService.storyDTO.post_modified,
-        this.StoryService.storyDTO.post_modified_gmt,
-        this.StoryService.storyDTO.post_content_filtered,
-        this.StoryService.storyDTO.post_parent,
-        this.StoryService.storyDTO.guid,
-        this.StoryService.storyDTO.menu_order,
-        this.StoryService.storyDTO.post_type,
-        this.StoryService.storyDTO.post_mime_type,
-        this.StoryService.storyDTO.comment_count,
+        this.storyDTO.post_author,
+        this.storyDTO.post_date,
+        this.storyDTO.post_date_gmt,
+        this.storyDTO.post_content,
+        this.storyDTO.post_title,
+        this.storyDTO.post_excerpt,
+        this.storyDTO.post_status,
+        this.storyDTO.comment_status,
+        this.storyDTO.ping_status,
+        this.storyDTO.post_password,
+        this.storyDTO.post_name,
+        this.storyDTO.to_ping,
+        this.storyDTO.pinged,
+        this.storyDTO.post_modified,
+        this.storyDTO.post_modified_gmt,
+        this.storyDTO.post_content_filtered,
+        this.storyDTO.post_parent,
+        this.storyDTO.guid,
+        this.storyDTO.menu_order,
+        this.storyDTO.post_type,
+        this.storyDTO.post_mime_type,
+        this.storyDTO.comment_count,
       ];
 
       // Executando a instrução SQL
@@ -93,7 +89,7 @@ class StoryService {
 
         console.log("[service-create-story] Success: ao inserir story");
 
-        this.StoryService.storyId = result.insertId;
+        this.storyId = result.insertId;
 
         StoryService.insertImageCover();
       });
@@ -102,15 +98,7 @@ class StoryService {
     }
   }
 
-  /**
-   * @param {storyId} param id do story inserido
-   * @param {imageDto} param dto do payload da imagem de capa
-   * @returns {Object} Retorno de um obijeto contendo o id
-   */
   static async insertImageCover() {
-
-
-    console.log("THIS.StoryService >>>>>> ", this.StoryService)
     try {
       // Inserindo a imagem de capa
       const sqlImage = `INSERT INTO dQMf2A_posts (
@@ -131,29 +119,29 @@ class StoryService {
         post_type,
         post_mime_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
       const valuesImage = [
-        this.StoryService.imageDTO.post_author,
-        this.StoryService.imageDTO.post_date,
-        this.StoryService.imageDTO.post_date_gmt,
-        this.StoryService.imageDTO.post_content,
-        this.StoryService.imageDTO.post_title,
-        this.StoryService.imageDTO.post_excerpt,
-        this.StoryService.imageDTO.post_status,
-        this.StoryService.imageDTO.comment_status,
-        this.StoryService.imageDTO.ping_status,
-        this.StoryService.imageDTO.post_name,
-        this.StoryService.imageDTO.post_modified,
-        this.StoryService.imageDTO.post_modified_gmt,
-        this.StoryService.imageDTO.post_parent,
-        this.StoryService.imageDTO.guid,
-        this.StoryService.imageDTO.post_type,
-        this.StoryService.imageDTO.post_mime_type,
+        this.imageDTO.post_author,
+        this.imageDTO.post_date,
+        this.imageDTO.post_date_gmt,
+        this.imageDTO.post_content,
+        this.imageDTO.post_title,
+        this.imageDTO.post_excerpt,
+        this.imageDTO.post_status,
+        this.imageDTO.comment_status,
+        this.imageDTO.ping_status,
+        this.imageDTO.post_name,
+        this.imageDTO.post_modified,
+        this.imageDTO.post_modified_gmt,
+        this.imageDTO.post_parent,
+        this.imageDTO.guid,
+        this.imageDTO.post_type,
+        this.imageDTO.post_mime_type,
       ];
 
       // Executando a instrução SQL
       connection.query(sqlImage, valuesImage, (error, result) => {
         if (error) throw error;
 
-        this.StoryService.imageId = result.insertId;
+        this.imageId = result.insertId;
 
         StoryService.relateImageToStory();
       });
@@ -166,13 +154,10 @@ class StoryService {
   }
 
   static async relateImageToStory() {
-
-
-    console.log("THIS.StoryService >>>>>> ", this.StoryService)
     const sqlRelationship = `INSERT INTO dQMf2A_postmeta (
       post_id, meta_key, meta_value
       ) VALUES (?, ?, ?)`;
-    const valuesRelationship = [this.StoryService.storyId, "_thumbnail_id", this.StoryService.imageId];
+    const valuesRelationship = [this.storyId, "_thumbnail_id", this.imageId];
 
     // Executando a instrução SQL
     connection.query(sqlRelationship, valuesRelationship, (error, result) => {
@@ -185,8 +170,6 @@ class StoryService {
   }
 
   static async createTaxonomy() {
-
-    console.log("THIS.StoryService >>>>>> ", this.StoryService)
     const sqlTaxonomy = `INSERT INTO dQMf2A_terms (
       name, slug, term_group
       ) VALUES (?, ?, ?)`;
@@ -203,18 +186,16 @@ class StoryService {
   }
 
   static async createRelationshipToTaxonomy() {
-
-    console.log("THIS >>>>>> ", this.StoryService)
     const sqlTaxonomy = `INSERT INTO dQMf2A_term_relationships (
       object_id, term_taxonomy_id, term_order
       ) VALUES (?, ?, ?)`;
-    const valuesTaxonomy = [this.StoryService.storyId, 10, 0];
+    const valuesTaxonomy = [this.storyId, 10, 0];
 
     // Executando a instrução SQL
     connection.query(sqlTaxonomy, valuesTaxonomy, (error, result) => {
       if (error) throw error;
 
-      this.StoryService.taxonomyId = result.insertId;
+      this.taxonomyId = result.insertId;
     });
   }
 }
