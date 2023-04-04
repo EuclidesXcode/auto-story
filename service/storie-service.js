@@ -90,6 +90,9 @@ class StoryService {
   }
 
   static async insertImageCover(imageDTO) {
+
+    console.log("IMAGE DTO:", imageDTO.post_author)
+
     try {
       // Inserindo a imagem de capa
       const sqlImage = `INSERT INTO dQMf2A_posts (
