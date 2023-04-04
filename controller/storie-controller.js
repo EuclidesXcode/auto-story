@@ -40,8 +40,11 @@ module.exports = class StorieController {
       const contentStory = await GPTService.generateContentStory(params.title);
       // const tags = await GPTService.generateTags(params.title);
 
+      console.log("PASSOU DO GPT, TUDO CERTO")
+
       const imageFind = await GoogleService.getImageByTitle(params.title)
 
+      console.log("PASSOU DO GOOGLE")
       const contentArrayByChatGPT =
         contentStory.choices[0].message.content.split("\n");
 
