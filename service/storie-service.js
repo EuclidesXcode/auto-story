@@ -36,6 +36,7 @@ class StoryService {
         });
       }
 
+      console.log("THIS >>>>>> ", this)
       // Inserindo o storu
       const sqlStory = `INSERT INTO dQMf2A_posts (
         post_author,
@@ -106,6 +107,9 @@ class StoryService {
    * @returns {Object} Retorno de um obijeto contendo o id
    */
   static async insertImageCover() {
+
+
+    console.log("THIS >>>>>> ", this)
     try {
       // Inserindo a imagem de capa
       const sqlImage = `INSERT INTO dQMf2A_posts (
@@ -161,6 +165,9 @@ class StoryService {
   }
 
   static async relateImageToStory() {
+
+
+    console.log("THIS >>>>>> ", this)
     const sqlRelationship = `INSERT INTO dQMf2A_postmeta (
       post_id, meta_key, meta_value
       ) VALUES (?, ?, ?)`;
@@ -177,6 +184,8 @@ class StoryService {
   }
 
   static async createTaxonomy() {
+
+    console.log("THIS >>>>>> ", this)
     const sqlTaxonomy = `INSERT INTO dQMf2A_terms (
       name, slug, term_group
       ) VALUES (?, ?, ?)`;
@@ -193,6 +202,8 @@ class StoryService {
   }
 
   static async createRelationshipToTaxonomy() {
+
+    console.log("THIS >>>>>> ", this)
     const sqlTaxonomy = `INSERT INTO dQMf2A_term_relationships (
       object_id, term_taxonomy_id, term_order
       ) VALUES (?, ?, ?)`;
