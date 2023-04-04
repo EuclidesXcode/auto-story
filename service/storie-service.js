@@ -160,7 +160,7 @@ class StoryService {
     });
   }
 
-  static async createTaxonomy(_, _) {
+  static async createTaxonomy(storyId, imageId) {
     const sqlTaxonomy = `INSERT INTO dQMf2A_terms (
       name, slug, term_group
       ) VALUES (?, ?, ?)`;
@@ -176,7 +176,7 @@ class StoryService {
     });
   }
 
-  static async createRelationshipToTaxonomy(storyId, _) {
+  static async createRelationshipToTaxonomy(storyId, taxonomyId) {
     const sqlTaxonomy = `INSERT INTO dQMf2A_term_relationships (
       object_id, term_taxonomy_id, term_order
       ) VALUES (?, ?, ?)`;
