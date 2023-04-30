@@ -1,10 +1,10 @@
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
-  host: "107.190.131.154",
-  user: "eucode",
-  password: "@cod3R00t",
-  database: "wp_off1i",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process_env.DB_PASS,
+  database: process.env.DB_NAME,
 });
 
 class StoryService {
@@ -26,7 +26,7 @@ class StoryService {
       }
 
       // Inserindo o storu
-      const sqlStory = `INSERT INTO dQMf2A_posts (
+      const sqlStory = `INSERT INTO ${process.env.DB_PREFIX}posts (
         post_author,
         post_date,
         post_date_gmt,
@@ -95,7 +95,7 @@ class StoryService {
 
     try {
       // Inserindo a imagem de capa
-      const sqlImage = `INSERT INTO dQMf2A_posts (
+      const sqlImage = `INSERT INTO ${process.env.DB_PREFIX}posts (
         post_author,
         post_date,
         post_date_gmt,
@@ -148,7 +148,7 @@ class StoryService {
   }
 
   static async relateImageToStory(storyId, imageId) {
-    const sqlRelationship = `INSERT INTO dQMf2A_postmeta (
+    const sqlRelationship = `INSERT INTO ${process.env.DB_PREFIX}postmeta (
       post_id, meta_key, meta_value
       ) VALUES (?, ?, ?)`;
     const valuesRelationship = [storyId, "_thumbnail_id", imageId];
@@ -164,7 +164,7 @@ class StoryService {
   }
 
   static async createTaxonomy(storyId, imageId) {
-    const sqlTaxonomy = `INSERT INTO dQMf2A_terms (
+    const sqlTaxonomy = `INSERT INTO ${process.env.DB_PREFIX}terms (
       name, slug, term_group
       ) VALUES (?, ?, ?)`;
     const valuesTaxonomy = ["teste de categoria", "teste-de-categoria", 0];
@@ -180,7 +180,7 @@ class StoryService {
   }
 
   static async createRelationshipToTaxonomy(storyId, taxonomyId) {
-    const sqlTaxonomy = `INSERT INTO dQMf2A_term_relationships (
+    const sqlTaxonomy = `INSERT INTO ${process.env.DB_PREFIX}term_relationships (
       object_id, term_taxonomy_id, term_order
       ) VALUES (?, ?, ?)`;
     const valuesTaxonomy = [storyId, 10, 0];
