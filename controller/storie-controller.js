@@ -34,6 +34,7 @@ module.exports = class StorieController {
       console.log("PASSOU DO GPT, TUDO CERTO", contentStory)
 
       const imageFind = await GoogleService.getImageByTitle(params.title)
+      
       const imageBlob = await ImageService.convertImageToBlob(imageFind);
 
       const imageCoverId = await StorieService.insertImageCover(imageBlob)
