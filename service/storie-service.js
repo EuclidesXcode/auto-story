@@ -4,6 +4,8 @@ class StoryService {
 
   static async createStory(storyDto) {
     try {
+        
+        console.log("entrou para criar o story")
 
       const response = await Axios.post(`${process.env.BASE_PATH}/wp-json/wp/v2/web-story`, storyDto, {
         headers: {
