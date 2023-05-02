@@ -1,16 +1,7 @@
 const StorieDTO = require("../dto/storie-dto");
-const ImageDTO = require("../dto/image-dto");
 const StorieService = require("../service/storie-service");
 const GPTService = require("../service/gpt-service");
 const GoogleService = require("../service/google-search");
-const mysql = require("mysql");
-
-const connection = mysql.createConnection({
-  host: "107.190.131.154",
-  user: "eucode",
-  password: "@cod3R00t",
-  database: "wp_off1i",
-});
 
 module.exports = class StorieController {
   /**
@@ -38,7 +29,6 @@ module.exports = class StorieController {
       const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
       const contentStory = await GPTService.generateContentStory(params.title);
-      // const tags = await GPTService.generateTags(params.title);
 
       console.log("PASSOU DO GPT, TUDO CERTO")
 
@@ -56,24 +46,18 @@ module.exports = class StorieController {
         imageFind
       );
 
-      const imageDTO = new ImageDTO(params, formattedDate, slug, imageFind);
 
-      const storyId = await StorieService.createStory(storieDTO);
+      const resultStory = await StorieService.createStory(storieDTO);
 
-      const imageId = await StorieService.insertImageCover(storyId, imageDTO);
+      if(resultStory) {
+        return {
+          statusCode: 201,
+          body: resultStory
+        }
+      }
 
-      await StorieService.relateImageToStory(storyId, imageId);
+      return resultStory;
 
-      const taxonomyId = await StorieService.createTaxonomy(storyId, imageId);
-
-      const taxonomyRelationId = await StorieService.createTaxonomy(storyId, taxonomyId);
-
-
-      console.log("id de relacionamento da taxonomia: ", taxonomyRelationId)
-
-      connection.end();
-
-      return result;
     } catch (err) {
       console.error("[story-controller-create-story] Error: ", err);
     }
