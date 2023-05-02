@@ -15,7 +15,7 @@ module.exports = class StorieDTO {
               },
               {
                 "type": "image",
-                "url": imageFind[0].url
+                "url": "https://funilemy.com.br/blog/wp-content/uploads/2022/03/outreach-marketing.png"
               }
             ]
           }
