@@ -20,6 +20,23 @@ class StoryService {
       console.error("[service-create-story] Error, storie not created: ", err);
     }
   }
+
+  static async insertImageCover(image) {
+
+    try {
+
+      if(image.length > 0) {
+        
+        // codigo da imagem aqui
+        // imagem de capa em image[0].url
+        
+      }
+
+      
+    } catch (error) {
+      console.log("Erro ao inserir a imagem de capa: ", error)
+    }
+  }
 }
 
 module.exports = StoryService;

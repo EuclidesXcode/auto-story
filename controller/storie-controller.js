@@ -34,6 +34,8 @@ module.exports = class StorieController {
 
       const imageFind = await GoogleService.getImageByTitle(params.title)
 
+      const imageCoverId = await StorieService.insertImageCover(imageFind)
+
       console.log("PASSOU DO GOOGLE")
       const contentArrayByChatGPT =
         contentStory.choices[0].message.content.split("\n");
