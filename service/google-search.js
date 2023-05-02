@@ -16,7 +16,7 @@ class GoogleService {
         API_KEY_GOOGLE_CLOUD
       );
 
-      const response = await client.search(title, {
+      const response = await client.search(title ? title : "imagem teste", {
         size: "large",
         page: 2
       });
