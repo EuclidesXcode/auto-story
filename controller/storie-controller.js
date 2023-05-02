@@ -30,7 +30,7 @@ module.exports = class StorieController {
 
       const contentStory = await GPTService.generateContentStory(params.title);
 
-      console.log("PASSOU DO GPT, TUDO CERTO")
+      console.log("PASSOU DO GPT, TUDO CERTO", contentStory)
 
       const imageFind = await GoogleService.getImageByTitle(params.title)
 
