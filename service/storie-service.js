@@ -3,6 +3,7 @@ const Axios = require('axios')
 class StoryService {
 
   static async createStory(storyDto) {
+
     try {
         
         console.log("entrou para criar o story")
