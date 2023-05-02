@@ -24,23 +24,23 @@ class StoryService {
 
   static async insertImageCover(image) {
     try {
-     
-        const formData = new FormData();
+      const formData = new FormData();
 
-        formData.append("file", image);
+      formData.append("file", image);
 
-        const response = await Axios.post(
-          `${process.env.BASE_PATH}/wp-json/wp/v2/media`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Bearer ${process.env.API_KEY_WP}`,
-            },
-          }
-        );
-        console.log("SALVOU IMAGEM DE CAPA %j", response);
-      
+      const response = await Axios.post(
+        `${process.env.BASE_PATH}/wp-json/wp/v2/media`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "Cache-Control": "max-age=0",
+            Authorization: `Bearer ${process.env.API_KEY_WP}`,
+          },
+          responseType: "stream",
+        }
+      );
+      console.log("SALVOU IMAGEM DE CAPA %j", response);
     } catch (error) {
       console.log("Erro ao inserir a imagem de capa: ", error);
     }

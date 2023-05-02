@@ -7,7 +7,10 @@ class ImageService {
 
         try {
             
-            const imageUrl = image.length > 0 ? image[0].url : "https://funilemy.com.br/blog/wp-content/uploads/2022/03/outreach-marketing.png";
+            const imageUrl = image.length > 0 ? image[0].url : "https://static8.depositphotos.com/1052928/952/i/600/depositphotos_9520406-stock-photo-duck-white.jpg";
+
+            console.log("Image url: ", imageUrl)
+
             const response = await fetch(imageUrl);
             const blob = await response.blob();
             return blob;

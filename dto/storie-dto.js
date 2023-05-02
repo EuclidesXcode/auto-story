@@ -26,14 +26,15 @@ module.exports = class StorieDTO {
         font-size: 1.600em;
         font-weight: normal;
         line-height: 1.174;
+        margin-bottom: 10px;
       }
       p {
-      
         font-family: Arial, Helvetica, sans-serif;
         font-weight: normal;
         font-size: 1.0em;
         line-height: 1.2em;
         color: #fff;
+        margin-bottom: 10px;
       }
       q {
         font-weight: 300;
@@ -93,8 +94,8 @@ module.exports = class StorieDTO {
   <body>
     <amp-story standalone
         title="${params.title}"
-        publisher="Euclides Silva"
-        publisher-logo-src="assets/AMP-Brand-White-Icon.svg"
+        publisher="The BrazilTech"
+        publisher-logo-src="https://thebraziltech.com.br/wp-content/uploads/2022/08/cropped-Captura-de-Tela-2022-08-06-as-15.29.16-1.png"
         poster-portrait-src="${imageFind.length > 0 ? imageFind[0].url : "https://funilemy.com.br/blog/wp-content/uploads/2022/03/outreach-marketing.png"}">
         <amp-story-page id="cover" auto-advance-after="7s"> 
             <amp-story-grid-layer template="fill">

@@ -5,8 +5,6 @@ const GoogleImages = require("google-images");
 class GoogleService {
   static async getImageByTitle(title) {
 
-    console.log("Entrou pra buscar as imagens")
-
     try {
       const API_KEY_GOOGLE_CLOUD = process.env.API_KEY_GOOGLE_CLOUD;
       const API_ID_CLIENT_GOOGLE = process.env.API_ID_CLIENT_GOOGLE;
@@ -20,8 +18,6 @@ class GoogleService {
         size: "large",
         page: 2
       });
-
-      console.log("RESULTADOS GOOGLE: ", response)
 
       return response;
 
