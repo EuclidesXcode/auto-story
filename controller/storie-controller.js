@@ -2,6 +2,7 @@ const StorieDTO = require("../dto/storie-dto");
 const StorieService = require("../service/storie-service");
 const GPTService = require("../service/gpt-service");
 const GoogleService = require("../service/google-search");
+const ImageService = require("../service/image-service");
 
 module.exports = class StorieController {
   /**
@@ -33,8 +34,9 @@ module.exports = class StorieController {
       console.log("PASSOU DO GPT, TUDO CERTO", contentStory)
 
       const imageFind = await GoogleService.getImageByTitle(params.title)
+      const imageBlob = await ImageService.convertImageToBlob(imageFind);
 
-      const imageCoverId = await StorieService.insertImageCover(imageFind)
+      const imageCoverId = await StorieService.insertImageCover(imageBlob)
 
       console.log("PASSOU DO GOOGLE")
       const contentArrayByChatGPT =

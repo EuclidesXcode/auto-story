@@ -1,19 +1,20 @@
-const Axios = require('axios')
+const Axios = require("axios");
 
 class StoryService {
-
   static async createStory(storyDto) {
-
     try {
-        
-        console.log("entrou para criar o story")
+      console.log("entrou para criar o story");
 
-      const response = await Axios.post(`${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story`, storyDto, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.API_KEY_WP}`
+      const response = await Axios.post(
+        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story`,
+        storyDto,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.API_KEY_WP}`,
+          },
         }
-      });
+      );
 
       return response.data;
     } catch (err) {
@@ -22,19 +23,26 @@ class StoryService {
   }
 
   static async insertImageCover(image) {
-
     try {
+     
+        const formData = new FormData();
 
-      if(image.length > 0) {
-        
-        // codigo da imagem aqui
-        // imagem de capa em image[0].url
-        
-      }
+        formData.append("file", image);
 
+        const response = await Axios.post(
+          `${process.env.BASE_PATH}/wp-json/wp/v2/media`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${process.env.API_KEY_WP}`,
+            },
+          }
+        );
+        console.log("SALVOU IMAGEM DE CAPA %j", response);
       
     } catch (error) {
-      console.log("Erro ao inserir a imagem de capa: ", error)
+      console.log("Erro ao inserir a imagem de capa: ", error);
     }
   }
 }
