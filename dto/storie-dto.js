@@ -287,6 +287,22 @@ module.exports = class StorieDTO {
   </body>
 </html>
       `,
-      this.story_data = {}
+      this.story_data = {
+        "pages": [
+          {
+            "elements": [
+              {
+                "type": "text",
+                "text": content[0],
+                "color": "#ffffff"
+              },
+              {
+                "type": "image",
+                "url": "https://funilemy.com.br/blog/wp-content/uploads/2022/03/outreach-marketing.png"
+              }
+            ]
+          }
+        ]
+      }
   }
 };
