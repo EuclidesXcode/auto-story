@@ -41,7 +41,7 @@ class StoryService {
       formData.append("description", "pato patata");
 
       console.log("meu form data gerado %j", boundary, formData);
-      
+
       const response = await Axios.post(
         `${process.env.BASE_PATH}/wp-json/wp/v2/media`,
         formData,
@@ -52,9 +52,31 @@ class StoryService {
           },
         }
       );
-      console.log("SALVOU IMAGEM DE CAPA %j", response?.data);
+      console.log("ID DA IMAGEM DE CAPA %j", response?.data?.id);
+      return response.data.id;
     } catch (error) {
       console.log("Erro ao inserir a imagem de capa: ", error);
+    }
+  }
+
+  static async relationImageCoverToStory(storyId, coverId) {
+    try {
+      const response = await Axios.post(
+        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`,
+        {
+          featuredMedia: coverId,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.API_KEY_WP}`,
+          },
+        }
+      );
+
+      return response.data.id;
+    } catch (error) {
+      console.log("Erro ao criar relacionamento de imagem de capa: ", error);
     }
   }
 }

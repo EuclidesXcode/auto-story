@@ -39,25 +39,27 @@ module.exports = class StorieController {
 
       const imageCoverId = await StorieService.insertImageCover(imageBlob)
 
+      
       console.log("PASSOU DO GOOGLE")
       const contentArrayByChatGPT =
-        contentStory.choices[0].message.content.split("\n");
-
+      contentStory.choices[0].message.content.split("\n");
+      
       const storieDTO = new StorieDTO(
         params,
         formattedDate,
         contentArrayByChatGPT,
         slug,
         imageFind
-      );
+        );
+        
+        const storyId = await StorieService.createStory(storieDTO);
+        
+        const relationId = await StorieService.relationImageCoverToStory(storyId, imageCoverId)
 
-
-      const resultStory = await StorieService.createStory(storieDTO);
-
-      if(resultStory) {
+      if(relationId) {
         return {
           statusCode: 201,
-          body: resultStory
+          body: relationId
         }
       }
 
