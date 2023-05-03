@@ -55,7 +55,8 @@ module.exports = class StorieController {
 
       const relationId = await StorieService.relationImageCoverToStory(
         storyId,
-        imageCoverId
+        imageCoverId,
+        params.title
       );
 
       if (relationId) {

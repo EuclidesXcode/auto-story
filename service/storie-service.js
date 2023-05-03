@@ -56,13 +56,16 @@ class StoryService {
     }
   }
 
-  static async relationImageCoverToStory(storyId, coverId) {
+  static async relationImageCoverToStory(storyId, coverId, title) {
     try {
+      const payload = {
+        featuredMedia: coverId,
+        status: 'publish',
+        title: title
+      };
+
       const response = await Axios.post(
-        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`,
-        {
-          featuredMedia: coverId,
-        },
+        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`, payload,
         {
           headers: {
             "Content-Type": "application/json",
