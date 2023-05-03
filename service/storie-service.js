@@ -104,8 +104,6 @@ class StoryService {
         );
 
         tagsIds.push(response.data.id);
-        
-        console.log("response tags: %j", tagsIds)
       });
 
       return tagsIds;
