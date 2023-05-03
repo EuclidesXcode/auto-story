@@ -59,12 +59,12 @@ class StoryService {
   static async relationImageCoverToStory(storyId, coverId) {
     try {
       const payload = {
-        story_id: storyId,
-        media_id: coverId
+        story_cover_relationship: storyId
       };
-
-      const response = await Axios.post(
-        `${process.env.BASE_PATH}/wp-json/wp/v2/media`, payload,
+  
+      const response = await Axios.put(
+        `${process.env.BASE_PATH}/wp-json/wp/v2/media/${coverId}`, 
+        payload,
         {
           headers: {
             "Content-Type": "application/json",
@@ -72,9 +72,9 @@ class StoryService {
           },
         }
       );
-
+  
       console.log("RELACIONAMENTO FEITO: ", response.data);
-
+  
       return response.data.id;
     } catch (error) {
       console.log("Erro ao criar relacionamento de imagem de capa: ", error);
