@@ -29,29 +29,6 @@ module.exports = class StorieController {
 
       const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-      const contentStory = await GPTService.generateContentStory(params.title);
-
-      const imageFind = await GoogleService.getImageByTitle(params.title);
-
-      const imageBlob = await ImageService.convertImageToBlob(imageFind);
-
-      const imageCoverId = await StorieService.insertImageCover(
-        imageBlob,
-        params.title
-      );
-
-      const contentArrayByChatGPT =
-        contentStory.choices[0].message.content.split("\n");
-
-      const storieDTO = new StorieDTO(
-        params,
-        formattedDate,
-        contentArrayByChatGPT,
-        slug,
-        imageFind
-      );
-
-      const storyId = await StorieService.createStory(storieDTO);
 
       // taxonomias
 
@@ -80,6 +57,30 @@ module.exports = class StorieController {
       const tagsIds = await StorieService.insertTags(tagList)
 
       // taxonomias
+
+      const contentStory = await GPTService.generateContentStory(params.title);
+
+      const imageFind = await GoogleService.getImageByTitle(params.title);
+
+      const imageBlob = await ImageService.convertImageToBlob(imageFind);
+
+      const imageCoverId = await StorieService.insertImageCover(
+        imageBlob,
+        params.title
+      );
+
+      const contentArrayByChatGPT =
+        contentStory.choices[0].message.content.split("\n");
+
+      const storieDTO = new StorieDTO(
+        params,
+        formattedDate,
+        contentArrayByChatGPT,
+        slug,
+        imageFind
+      );
+
+      const storyId = await StorieService.createStory(storieDTO);
 
       const relationId = await StorieService.relationshipStory(
         storyId,
