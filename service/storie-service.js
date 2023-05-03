@@ -118,7 +118,7 @@ class StoryService {
       console.log("Payload do relacionamento: %j", payload);
 
       const response = await Axios.put(
-        `${process.env.BASE_PATH}/wp-json/web-stories/v2/web-story/${storyId}`,
+        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`,
         payload,
         {
           headers: {
