@@ -8,17 +8,17 @@ class ImageService {
 
         try {
             
-            const imageUrl = image.length > 0 ? image[0].url : "https://static8.depositphotos.com/1052928/952/i/600/depositphotos_9520406-stock-photo-duck-white.jpg";
+            const imageUrl = "https://static8.depositphotos.com/1052928/952/i/600/depositphotos_9520406-stock-photo-duck-white.jpg" ;
 
             console.log("Image url: ", imageUrl)
 
-            const { data } = await axios.get(imageUrl, {
+            const response = await axios.get(imageUrl, {
                 headers: {
                     'Cache-Control': 'max-age=0',
                 }, responseType: 'stream'
             });
-           
-            return data;
+            console.log('data blob image',response.data);
+            return response.data;
             
         }catch(error) {
 
