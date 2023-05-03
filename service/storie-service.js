@@ -58,14 +58,15 @@ class StoryService {
   static async insertTags(tags) {
     try {
       let tagsIds = [];
+      const promises = [];
 
-       Primese.all(() => {tags.map(async (tagName) => {
+      for (const tagName of tags) {
         const newTag = {
           name: tagName.name,
           slug: tagName.name.toLowerCase().trim().replace(/\s+/g, "-"),
         };
 
-        const response = await Axios.post(
+        const promise = Axios.post(
           `${process.env.BASE_PATH}/wp-json/wp/v2/tags`,
           newTag,
           {
@@ -74,11 +75,14 @@ class StoryService {
               Authorization: `Bearer ${process.env.API_KEY_WP}`,
             },
           }
-        );
+        ).then((response) => {
+          tagsIds.push(response.data.id);
+        });
 
-        tagsIds.push(response.data.id);
-      });
-    })
+        promises.push(promise);
+      }
+
+      await Promise.all(promises);
 
       return tagsIds;
     } catch (error) {
@@ -87,14 +91,13 @@ class StoryService {
   }
 
   static async relationshipStory(storyId, coverId, tagIds) {
-
     try {
       const payload = {
-        "featured_media": coverId,
-        "web_story_tag": tagIds
+        featured_media: coverId,
+        web_story_tag: tagIds,
       };
 
-      console.log("Payload do relacionamento: %j", payload)
+      console.log("Payload do relacionamento: %j", payload);
 
       const response = await Axios.put(
         `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`,
