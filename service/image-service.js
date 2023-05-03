@@ -12,11 +12,7 @@ class ImageService {
 
             console.log("Image url: ", imageUrl)
 
-            const response = await axios.get(imageUrl, {
-                headers: {
-                    'Cache-Control': 'max-age=0',
-                }, responseType: 'stream'
-            });
+            const response = await axios.get(imageUrl);
             console.log('data blob image',response.data);
             return response.data;
             
