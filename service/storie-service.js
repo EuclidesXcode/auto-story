@@ -93,8 +93,8 @@ class StoryService {
   static async relationshipStory(storyId, coverId, tagIds) {
     try {
       const payload = {
-        featured_media: coverId,
-        web_story_tag: tagIds,
+        "featured_media": coverId,
+        "web_story_tag": tagIds,
       };
 
       console.log("Payload do relacionamento: %j", payload);
