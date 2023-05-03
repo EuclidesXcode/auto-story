@@ -81,13 +81,16 @@ module.exports = class StorieController {
         });
       });
 
-      console.log("TAGS: %j", tagList);
+      const tagsIds = await StorieService.insertTags(tags)
+
+      console.log("TAGS: %j", tagsIds);
 
       // taxonomias
 
       const relationId = await StorieService.relationshipStory(
         storyId,
-        imageCoverId
+        imageCoverId,
+        tagsIds
       );
 
       if (relationId) {

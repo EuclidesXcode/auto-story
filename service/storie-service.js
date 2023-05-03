@@ -3,7 +3,6 @@ const Axios = require("axios");
 class StoryService {
   static async createStory(storyDto) {
     try {
-
       const response = await Axios.post(
         `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story`,
         storyDto,
@@ -56,19 +55,19 @@ class StoryService {
     }
   }
 
-  static async relationshipStory(storyId, coverId) {
-
-        // , categoryIds, tagIds
-        // web_story_category: categoryIds,
-        // web_story_tag: tagIds
+  static async relationshipStory(storyId, coverId, tagIds) {
+    // , categoryIds, tagIds
+    // web_story_category: categoryIds,
+    // web_story_tag: tagIds
 
     try {
       const payload = {
-        featured_media: coverId
+        featured_media: coverId,
+        web_story_tag: tagIds
       };
-  
+
       const response = await Axios.put(
-        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`, 
+        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`,
         payload,
         {
           headers: {
@@ -77,10 +76,42 @@ class StoryService {
           },
         }
       );
-  
+
       console.log("RELACIONAMENTO FEITO: ", response.data.id);
-  
+
       return response.data.id;
+    } catch (error) {
+      console.log("Erro ao criar relacionamento de imagem de capa: ", error);
+    }
+  }
+
+  static insertTags(tags) {
+    try {
+      let tagsIds = [];
+
+      tags.forEach(async (tagName) => {
+        const newTag = {
+          name: tagName,
+          slug: tagName.toLowerCase().replace(" ", "-"),
+        };
+
+        const response = await Axios.post(
+          `${process.env.BASE_PATH}/wp-json/wp/v2/tags`,
+          newTag,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${process.env.API_KEY_WP}`,
+            },
+          }
+        );
+
+        tagsIds.push(response.data.id);
+      });
+
+      console.log("Array de TAGS: %j", tagsIds);
+
+      return tagsIds;
     } catch (error) {
       console.log("Erro ao criar relacionamento de imagem de capa: ", error);
     }
