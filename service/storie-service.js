@@ -95,6 +95,8 @@ class StoryService {
           slug: tagName.name,
         };
 
+        console.log("newtags: %j", newTag)
+
         const response = await Axios.post(
           `${process.env.BASE_PATH}/wp-json/wp/v2/tags`,
           newTag,
@@ -105,6 +107,8 @@ class StoryService {
             },
           }
         );
+
+        console.log("response tags: %j", response.data.id)
 
         tagsIds.push(response.data.id);
       });
