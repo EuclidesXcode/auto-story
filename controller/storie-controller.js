@@ -71,7 +71,7 @@ module.exports = class StorieController {
 
       let tagList = [];
 
-      tags.split(",").map((tag) => {
+      await tags.split(",").map((tag) => {
         tagList.push({
           name: tag.trim()
         });
@@ -94,7 +94,7 @@ module.exports = class StorieController {
         };
       }
 
-      return resultStory;
+      return relationId;
     } catch (err) {
       console.error("[story-controller-create-story] Error: ", err);
     }
