@@ -81,7 +81,7 @@ class GPTService {
         Authorization: `Bearer ${process.env.API_KEY_OPEN_IA}`,
       };
 
-      const content = `Gere 10 tags separadas por virgula, sem pular linhas, atualizadas com base nos interesses atuais baseadas nesse titulo: ${title}`;
+      const content = `Gere 5 tags separadas por virgula, sem pular linhas, atualizadas com base nos interesses atuais baseadas nesse titulo: ${title}`;
 
       const data = {
         messages: [{ role: "user", content: content }],
