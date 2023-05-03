@@ -27,7 +27,7 @@ class StoryService {
      
           const boundary = '--------------------------' + Date.now().toString(16);
 
-          const data = `--${boundary}\r\n`;
+          let data = `--${boundary}\r\n`;
           data += `Content-Disposition: form-data; name="imagem"; filename="imagem.jpg"\r\n`;
           data += `Content-Type: image/jpeg\r\n\r\n`;
           data += `${image.toString('binary')}\r\n`;
