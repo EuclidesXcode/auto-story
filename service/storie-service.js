@@ -52,7 +52,7 @@ class StoryService {
           },
         }
       );
-      console.log("SALVOU IMAGEM DE CAPA %j", response);
+      console.log("SALVOU IMAGEM DE CAPA %j", response?.data);
     } catch (error) {
       console.log("Erro ao inserir a imagem de capa: ", error);
     }
