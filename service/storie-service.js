@@ -16,7 +16,7 @@ class StoryService {
         }
       );
 
-      return response.data;
+      return response.data.id;
     } catch (err) {
       console.error("[service-create-story] Error, storie not created: ", err);
     }
