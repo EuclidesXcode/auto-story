@@ -86,7 +86,7 @@ class StoryService {
     try {
       let tagsIds = [];
 
-      tags.forEach(async (tagName) => {
+      await tags.forEach(async (tagName) => {
         const newTag = {
           name: tagName.name,
           slug: tagName.name.toLowerCase().trim().replace(/\s+/g, "-"),
