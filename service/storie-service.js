@@ -36,8 +36,7 @@ class StoryService {
             "Content-Type": "multipart/form-data",
             "Cache-Control": "max-age=0",
             Authorization: `Bearer ${process.env.API_KEY_WP}`,
-          },
-          responseType: "stream",
+          }
         }
       );
       console.log("SALVOU IMAGEM DE CAPA %j", response);
