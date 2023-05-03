@@ -24,22 +24,26 @@ class StoryService {
 
   static async insertImageCover(image) {
     try {
-     
-          const boundary = '--------------------------' + Date.now().toString(16);
+      const imageBuffer = Buffer.from(image);
 
-          let data = `--${boundary}\r\n`;
-          data += `Content-Disposition: form-data; name="imagem"; filename="imagem.jpg"\r\n`;
-          data += `Content-Type: image/jpeg\r\n\r\n`;
-          data += `${image.toString('binary')}\r\n`;
-          data += `--${boundary}--\r\n`;
-      console.log('meu form data %j', boundary, data)
+      // Convertendo o buffer array para base64
+      const imageBase64 = imageBuffer.toString('base64');
+  
+      const boundary = "--------------------------" + Date.now().toString(16);
+
+      let data = `--${boundary}\r\n`;
+      data += `Content-Disposition: form-data; name="imagem"; filename="imagem.jpg"\r\n`;
+      data += `Content-Type: image/jpeg\r\n\r\n`;
+      data += `${imageBase64.toString("binary")}\r\n`;
+      data += `--${boundary}--\r\n`;
+      console.log("meu form data %j", boundary, data);
       const response = await Axios.post(
         `${process.env.BASE_PATH}/wp-json/wp/v2/media`,
         data,
         {
           headers: {
-            "Content-Type":`multipart/form-data; boundary=${boundary}`,
-            'Content-Length': data.length.toString(),
+            "Content-Type": `multipart/form-data; boundary=${boundary}`,
+            "Content-Length": data.length.toString(),
             Authorization: `Bearer ${process.env.API_KEY_WP}`,
           },
         }
