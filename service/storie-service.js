@@ -59,7 +59,7 @@ class StoryService {
     try {
       let tagsIds = [];
 
-      await tags.forEach(async (tagName) => {
+       Primese.all(() => {tags.map(async (tagName) => {
         const newTag = {
           name: tagName.name,
           slug: tagName.name.toLowerCase().trim().replace(/\s+/g, "-"),
@@ -78,6 +78,7 @@ class StoryService {
 
         tagsIds.push(response.data.id);
       });
+    })
 
       return tagsIds;
     } catch (error) {
