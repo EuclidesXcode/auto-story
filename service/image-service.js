@@ -1,3 +1,4 @@
+const { default: axios } = require("axios");
 
 
 
@@ -11,9 +12,13 @@ class ImageService {
 
             console.log("Image url: ", imageUrl)
 
-            const response = await fetch(imageUrl);
-            const blob = await response.blob();
-            return blob;
+            const { data } = await axios.get(imageUrl, {
+                headers: {
+                    'Cache-Control': 'max-age=0',
+                }, responseType: 'stream'
+            });
+           
+            return data;
             
         }catch(error) {
 
