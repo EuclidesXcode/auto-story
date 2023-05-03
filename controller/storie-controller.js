@@ -33,7 +33,7 @@ module.exports = class StorieController {
 
       const imageFind = await GoogleService.getImageByTitle(params.title);
 
-      const imageBlob = await ImageService.convertImageToBlob(imageFind);
+      const imageBlob = await ImageService.convertImageToBlob(params?.featured_image_url);
 
       const imageCoverId = await StorieService.insertImageCover(
         imageBlob,
