@@ -24,22 +24,22 @@ class StoryService {
 
   static async insertImageCover(image) {
     try {
-      const imageBlob = new Blob([image], { type: "image/jpeg" });
-      const formData = new FormData();
+      const params = new URLSearchParams();
 
-      formData.append("file", imageBlob,  'image112312321.jpg');
-
-      console.log('meu form data aqui ó %j', formData)
+      const fileData = Buffer.from(image).toString("base64");
       
+      params.append("file", fileData);
+
+      console.log("meu form data aqui ó %j", params);
+
       const response = await Axios.post(
         `${process.env.BASE_PATH}/wp-json/wp/v2/media`,
-        formData,
+        params,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
-            "Cache-Control": "max-age=0",
+            "Content-Type": "application/x-www-form-urlencoded",
             Authorization: `Bearer ${process.env.API_KEY_WP}`,
-          }
+          },
         }
       );
       console.log("SALVOU IMAGEM DE CAPA %j", response);
