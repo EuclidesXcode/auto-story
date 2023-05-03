@@ -25,8 +25,11 @@ class StoryService {
   static async insertImageCover(image) {
     try {  
       const boundary = Math.random().toString().substring(2);
+
       const meuBlob = new Blob([image], { type: 'image/jpeg' });
+
       const formData = new FormData();
+      
       formData.append('file', meuBlob, {
         filename: 'imagem.jpg',
         contentType: 'image/jpeg',
@@ -39,7 +42,6 @@ class StoryService {
         {
           headers: {
             "Content-Type": `multipart/form-data; boundary=${boundary}`,
-            "Content-Length": meuBlob.length.toString(),
             Authorization: `Bearer ${process.env.API_KEY_WP}`,
           },
         }
