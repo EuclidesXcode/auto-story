@@ -65,7 +65,7 @@ class StoryService {
         }
       };
   
-      const response = await Axios.put(
+      const response = await Axios.post(
         `${process.env.BASE_PATH}/wp-json/wp/v2/stories/${storyId}`, 
         payload,
         {
