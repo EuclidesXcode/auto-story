@@ -14,7 +14,7 @@ class ImageService {
 
             const response = await axios.get(imageUrl);
             console.log('data blob image',response.data.length);
-            return response.data;
+            return  new Blob([response.data], { type: "image/jpeg" });;
             
         }catch(error) {
 
