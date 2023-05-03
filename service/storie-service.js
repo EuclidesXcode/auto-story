@@ -25,7 +25,7 @@ class StoryService {
   static async insertImageCover(image) {
     try {
       const formData = new FormData();
-
+      
       formData.append("file", image,  'image112312321.jpg');
 
       console.log('meu form data aqui ó %j', formData)
