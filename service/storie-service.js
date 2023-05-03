@@ -66,7 +66,7 @@ class StoryService {
       };
   
       const response = await Axios.post(
-        `${process.env.BASE_PATH}/wp-json/wp/v2/stories/${storyId}`, 
+        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`, 
         payload,
         {
           headers: {
