@@ -31,7 +31,7 @@ class StoryService {
 
 
       const body = `--${boundary}\r\n` +
-      `Content-Disposition: form-data; name="imagem"; filename="image.jpg"\r\n` +
+      `Content-Disposition: form-data; name="file"; filename="image.jpg"\r\n` +
       `Content-Type: image/jpeg\r\n\r\n` +
       `${uint8Array}\r\n` +
       `--${boundary}--`;
