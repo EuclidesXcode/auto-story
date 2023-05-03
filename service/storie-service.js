@@ -24,17 +24,14 @@ class StoryService {
 
   static async insertImageCover(image) {
     try {
-      const imageBuffer = Buffer.from(image);
-
-      // Convertendo o buffer array para base64
-      const imageBase64 = imageBuffer.toString('base64');
+      const blob = new Blob([image], { type: 'image/jpeg' });
   
       const boundary = "--------------------------" + Date.now().toString(16);
 
       let data = `--${boundary}\r\n`;
       data += `Content-Disposition: form-data; name="imagem"; filename="imagem.jpg"\r\n`;
       data += `Content-Type: image/jpeg\r\n\r\n`;
-      data += `${imageBase64.toString("binary")}\r\n`;
+      data += `${blob}\r\n`;
       data += `--${boundary}--\r\n`;
       console.log("meu form data %j", boundary, data);
       const response = await Axios.post(
