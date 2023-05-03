@@ -67,17 +67,17 @@ module.exports = class StorieController {
       //   });
       // });
 
-      const tags = await GPTService.generateTags(params.title);
+      // const tags = await GPTService.generateTags(params.title);
 
-      let tagList = [];
+      // let tagList = [];
 
-      await tags.split(",").map((tag) => {
-        tagList.push({
-          name: tag.trim()
-        });
-      });
+      // await tags.split(",").map((tag) => {
+      //   tagList.push({
+      //     name: tag.trim()
+      //   });
+      // });
 
-      const tagsIds = await StorieService.insertTags(tagList)
+      // const tagsIds = await StorieService.insertTags(tagList)
 
       // taxonomias
 

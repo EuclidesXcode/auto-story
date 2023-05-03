@@ -92,24 +92,27 @@ class StoryService {
 
   static async relationshipStory(storyId, coverId, tagIds) {
     try {
-      const dataStory = await Axios.get(
-        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.API_KEY_WP}`,
-          },
-        }
-      );
+      
+      // const dataStory = await Axios.get(
+      //   `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`,
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       Authorization: `Bearer ${process.env.API_KEY_WP}`,
+      //     },
+      //   }
+      // );
+
+
+      // title: dataStory.data.title,
+      // content: dataStory.data.content,
+      // taxonomy: {
+      //   web_story_tag: tagIds,
+      //   web_story_category: [],
+      // },
 
       const payload = {
         featured_media: coverId,
-        title: dataStory.data.title,
-        content: dataStory.data.content,
-        taxonomy: {
-          web_story_tag: tagIds,
-          web_story_category: [],
-        },
       };
 
       console.log("Payload do relacionamento: %j", payload.story_data.taxonomy);
