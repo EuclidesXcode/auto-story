@@ -59,12 +59,11 @@ class StoryService {
   static async relationImageCoverToStory(storyId, coverId) {
     try {
       const payload = {
-        key: '_thumbnail_id',
-        value: coverId,
+        featured_media: coverId,
       };
   
-      const response = await Axios.post(
-        `${process.env.BASE_PATH}/wp-json/wp/v2/posts/${storyId}/meta`, 
+      const response = await Axios.put(
+        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story${storyId}`, 
         payload,
         {
           headers: {
@@ -74,7 +73,7 @@ class StoryService {
         }
       );
   
-      console.log("RELACIONAMENTO FEITO: ", response.data);
+      console.log("RELACIONAMENTO FEITO: ", response.data.id);
   
       return response.data.id;
     } catch (error) {
