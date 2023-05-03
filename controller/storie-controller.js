@@ -59,11 +59,11 @@ module.exports = class StorieController {
 
       let categoriesList = [];
 
-      categories.split(",").map((item) => {
+      categories.split(",").map((category) => {
         categoriesList.push({
-          name: item.trim(),
-          slug: item.toLowerCase().trim().replace(/\s+/g, "-"),
-          description: item,
+          name: category.trim(),
+          slug: category.toLowerCase().trim().replace(/\s+/g, "-"),
+          description: category,
         });
       });
 
@@ -73,11 +73,11 @@ module.exports = class StorieController {
 
       let tagList = [];
 
-      tags.split(",").map((item) => {
+      tags.split(",").map((tag) => {
         tagList.push({
-          name: item.trim(),
-          slug: item.toLowerCase().trim().replace(/\s+/g, "-"),
-          description: item,
+          name: tag.trim(),
+          slug: tag.toLowerCase().trim().replace(/\s+/g, "-"),
+          description: tag,
         });
       });
 
