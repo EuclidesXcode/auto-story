@@ -38,6 +38,7 @@ class GPTService {
    * @returns {Object} Retorno de um objeto contendo as 10 tags
    */
   static async generateTags(title) {
+    
     try {
       const url = "https://api.openai.com/v1/chat/completions";
 
