@@ -63,7 +63,7 @@ class StoryService {
       };
   
       const response = await Axios.put(
-        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story${storyId}`, 
+        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`, 
         payload,
         {
           headers: {
