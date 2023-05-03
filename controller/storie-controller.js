@@ -31,40 +31,41 @@ module.exports = class StorieController {
 
       const contentStory = await GPTService.generateContentStory(params.title);
 
-      const imageFind = await GoogleService.getImageByTitle(params.title)
+      const imageFind = await GoogleService.getImageByTitle(params.title);
 
       const imageBlob = await ImageService.convertImageToBlob(imageFind);
-      
-      console.log('imageBlob %j', imageBlob.length);
 
-      const imageCoverId = await StorieService.insertImageCover(imageBlob)
+      const imageCoverId = await StorieService.insertImageCover(
+        imageBlob,
+        params.title
+      );
 
-      
-      console.log("PASSOU DO GOOGLE")
       const contentArrayByChatGPT =
-      contentStory.choices[0].message.content.split("\n");
-      
+        contentStory.choices[0].message.content.split("\n");
+
       const storieDTO = new StorieDTO(
         params,
         formattedDate,
         contentArrayByChatGPT,
         slug,
         imageFind
-        );
-        
-        const storyId = await StorieService.createStory(storieDTO);
-        
-        const relationId = await StorieService.relationImageCoverToStory(storyId, imageCoverId)
+      );
 
-      if(relationId) {
+      const storyId = await StorieService.createStory(storieDTO);
+
+      const relationId = await StorieService.relationImageCoverToStory(
+        storyId,
+        imageCoverId
+      );
+
+      if (relationId) {
         return {
           statusCode: 201,
-          body: relationId
-        }
+          body: relationId,
+        };
       }
 
       return resultStory;
-
     } catch (err) {
       console.error("[story-controller-create-story] Error: ", err);
     }

@@ -3,7 +3,6 @@ const Axios = require("axios");
 class StoryService {
   static async createStory(storyDto) {
     try {
-      console.log("entrou para criar o story");
 
       const response = await Axios.post(
         `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story`,
@@ -22,7 +21,7 @@ class StoryService {
     }
   }
 
-  static async insertImageCover(image) {
+  static async insertImageCover(image, title) {
     try {
       const boundary = Math.random().toString().substring(2);
 
@@ -37,10 +36,8 @@ class StoryService {
 
       formData.append("alt_text", "pato patati");
       formData.append("caption", "pato patata");
-      formData.append("title", "pato patata");
+      formData.append("title", title);
       formData.append("description", "pato patata");
-
-      console.log("meu form data gerado %j", boundary, formData);
 
       const response = await Axios.post(
         `${process.env.BASE_PATH}/wp-json/wp/v2/media`,
@@ -52,7 +49,7 @@ class StoryService {
           },
         }
       );
-      console.log("ID DA IMAGEM DE CAPA %j", response?.data?.id);
+
       return response.data.id;
     } catch (error) {
       console.log("Erro ao inserir a imagem de capa: ", error);
@@ -73,6 +70,8 @@ class StoryService {
           },
         }
       );
+
+      console.log("RELACIONAMENTO FEITO: ", response.data);
 
       return response.data.id;
     } catch (error) {
