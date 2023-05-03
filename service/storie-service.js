@@ -85,14 +85,14 @@ class StoryService {
     }
   }
 
-  static insertTags(tags) {
+  static async insertTags(tags) {
     try {
       let tagsIds = [];
 
       tags.forEach(async (tagName) => {
         const newTag = {
-          name: tagName,
-          slug: tagName.toLowerCase().replace(" ", "-"),
+          name: tagName.name,
+          slug: tagName.name,
         };
 
         const response = await Axios.post(

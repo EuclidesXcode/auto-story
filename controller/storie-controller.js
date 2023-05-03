@@ -75,13 +75,11 @@ module.exports = class StorieController {
 
       tags.split(",").map((tag) => {
         tagList.push({
-          name: tag.trim(),
-          slug: tag.toLowerCase().trim().replace(/\s+/g, "-"),
-          description: tag,
+          name: tag.trim()
         });
       });
 
-      const tagsIds = await StorieService.insertTags(tags)
+      const tagsIds = await StorieService.insertTags(tagList)
 
       console.log("TAGS: %j", tagsIds);
 
