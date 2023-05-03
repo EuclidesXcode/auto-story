@@ -13,7 +13,7 @@ class ImageService {
             console.log("Image url: ", imageUrl)
 
             const response = await axios.get(imageUrl);
-            console.log('data blob image',response.data);
+            console.log('data blob image',response.data.length);
             return response.data;
             
         }catch(error) {

@@ -34,6 +34,8 @@ module.exports = class StorieController {
       const imageFind = await GoogleService.getImageByTitle(params.title)
 
       const imageBlob = await ImageService.convertImageToBlob(imageFind);
+      
+      console.log('imageBlob %j', imageBlob.length);
 
       const imageCoverId = await StorieService.insertImageCover(imageBlob)
 
