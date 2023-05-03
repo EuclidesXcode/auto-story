@@ -90,7 +90,7 @@ class StoryService {
     }
   }
 
-  static async relationshipStory(storyId, coverId, tagIds) {
+  static async relationshipStory(storyId, coverId) {
     try {
 
       // const dataStory = await Axios.get(

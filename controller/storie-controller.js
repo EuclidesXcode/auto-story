@@ -83,8 +83,7 @@ module.exports = class StorieController {
 
       const relationId = await StorieService.relationshipStory(
         storyId,
-        imageCoverId,
-        tagsIds
+        imageCoverId
       );
 
       if (relationId) {
