@@ -92,9 +92,22 @@ class StoryService {
 
   static async relationshipStory(storyId, coverId, tagIds) {
     try {
+
+      const dataStory = await Axios.get(
+        `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.API_KEY_WP}`,
+          },
+        }
+      );
+
       const payload = {
         featured_media: coverId,
         story_data: {
+          title: dataStory.data.title,
+          content: dataStory.data.content,      
           taxonomy: {
             web_story_tag: tagIds,
           },
