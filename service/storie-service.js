@@ -27,7 +27,7 @@ class StoryService {
       const formData = new FormData();
 
       formData.append("file", image);
-
+      console.log('meu form data aqui ó %j', formData)
       const response = await Axios.post(
         `${process.env.BASE_PATH}/wp-json/wp/v2/media`,
         formData,
