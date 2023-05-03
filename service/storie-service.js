@@ -92,10 +92,8 @@ class StoryService {
       tags.forEach(async (tagName) => {
         const newTag = {
           name: tagName.name,
-          slug: tagName.name,
+          slug: tagName.name.toLowerCase().trim().replace(/\s+/g, "-"),
         };
-
-        console.log("newtags: %j", newTag)
 
         const response = await Axios.post(
           `${process.env.BASE_PATH}/wp-json/wp/v2/tags`,
@@ -108,12 +106,10 @@ class StoryService {
           }
         );
 
-        console.log("response tags: %j", response.data.id)
-
         tagsIds.push(response.data.id);
+        
+        console.log("response tags: %j", tagsIds)
       });
-
-      console.log("Array de TAGS: %j", tagsIds);
 
       return tagsIds;
     } catch (error) {
