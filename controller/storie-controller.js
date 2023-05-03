@@ -56,7 +56,7 @@ module.exports = class StorieController {
         // taxonomias
 
         const tags = await GPTService.generateTags(params.title)
-        console.log("TAGS: %j", tags.choices)
+        console.log("TAGS: %j", tags.choices[0].message.content)
 
         // taxonomias
 
