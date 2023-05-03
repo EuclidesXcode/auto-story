@@ -29,35 +29,6 @@ module.exports = class StorieController {
 
       const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-
-      // taxonomias
-
-      const categories = await GPTService.generateCategories(params.title);
-
-      let categoriesList = [];
-
-      categories.split(",").map((category) => {
-        categoriesList.push({
-          name: category.trim(),
-          slug: category.toLowerCase().trim().replace(/\s+/g, "-"),
-          description: category,
-        });
-      });
-
-      const tags = await GPTService.generateTags(params.title);
-
-      let tagList = [];
-
-      tags.split(",").map((tag) => {
-        tagList.push({
-          name: tag.trim()
-        });
-      });
-
-      const tagsIds = await StorieService.insertTags(tagList)
-
-      // taxonomias
-
       const contentStory = await GPTService.generateContentStory(params.title);
 
       const imageFind = await GoogleService.getImageByTitle(params.title);
@@ -81,6 +52,34 @@ module.exports = class StorieController {
       );
 
       const storyId = await StorieService.createStory(storieDTO);
+
+      // taxonomias
+
+      // const categories = await GPTService.generateCategories(params.title);
+
+      // let categoriesList = [];
+
+      // categories.split(",").map((category) => {
+      //   categoriesList.push({
+      //     name: category.trim(),
+      //     slug: category.toLowerCase().trim().replace(/\s+/g, "-"),
+      //     description: category,
+      //   });
+      // });
+
+      const tags = await GPTService.generateTags(params.title);
+
+      let tagList = [];
+
+      tags.split(",").map((tag) => {
+        tagList.push({
+          name: tag.trim()
+        });
+      });
+
+      const tagsIds = await StorieService.insertTags(tagList)
+
+      // taxonomias
 
       const relationId = await StorieService.relationshipStory(
         storyId,
