@@ -35,7 +35,7 @@ module.exports = class StorieController {
 
       const imageBlob = await ImageService.convertImageToBlob(imageFind);
       
-      console.log('imageBlob %j', imageBlob);
+      console.log('imageBlob %j', imageBlob.length);
 
       const imageCoverId = await StorieService.insertImageCover(imageBlob)
 
