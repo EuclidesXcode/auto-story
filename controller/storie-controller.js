@@ -67,6 +67,8 @@ module.exports = class StorieController {
         });
       });
 
+      console.log("CATEGORIAS: %j", categoriesList);
+
       const tags = await GPTService.generateTags(params.title);
 
       let tagList = [];
@@ -79,7 +81,7 @@ module.exports = class StorieController {
         });
       });
 
-      console.log("TAGS: %j", tagList, "CATEGORIAS: %j", categoriesList);
+      console.log("TAGS: %j", tagList);
 
       // taxonomias
 
