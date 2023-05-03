@@ -92,7 +92,6 @@ class StoryService {
 
   static async relationshipStory(storyId, coverId, tagIds) {
     try {
-
       const dataStory = await Axios.get(
         `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`,
         {
@@ -105,19 +104,18 @@ class StoryService {
 
       const payload = {
         featured_media: coverId,
-        story_data: {
-          title: dataStory.data.title.rendered,
-          content: dataStory.data.content.rendered,      
-          taxonomy: {
-            web_story_tag: tagIds,
-          },
+        title: dataStory.data.title,
+        content: dataStory.data.content,
+        taxonomy: {
+          web_story_tag: tagIds,
+          web_story_category: [],
         },
       };
 
       console.log("Payload do relacionamento: %j", payload.story_data.taxonomy);
 
       const response = await Axios.put(
-        `${process.env.BASE_PATH}/wp-json/wp/v2/posts/${storyId}`,
+        `${process.env.BASE_PATH}/wp-json/web-stories/v2/web-story/${storyId}`,
         payload,
         {
           headers: {
