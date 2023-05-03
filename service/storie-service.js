@@ -23,27 +23,23 @@ class StoryService {
   }
 
   static async insertImageCover(image) {
-    try {
-      const uint8Array = new Uint8Array(image);
-
-  
+    try {  
       const boundary = Math.random().toString().substring(2);
 
-
-      const body = `--${boundary}\r\n` +
-      `Content-Disposition: form-data; name="file"; filename="image.jpg"\r\n` +
-      `Content-Type: image/jpeg\r\n\r\n` +
-      `${uint8Array}\r\n` +
-      `--${boundary}--`;
+      const formData = new FormData();
+      formData.append('file', image, {
+        filename: 'imagem.jpg',
+        contentType: 'image/jpeg',
+      });
     
-      console.log("meu form data %j", boundary, body);
+      console.log("meu form data %j", boundary, formData);
       const response = await Axios.post(
         `${process.env.BASE_PATH}/wp-json/wp/v2/media`,
-        body,
+        formData,
         {
           headers: {
             "Content-Type": `multipart/form-data; boundary=${boundary}`,
-            "Content-Length": body.length.toString(),
+            "Content-Length": image.length.toString(),
             Authorization: `Bearer ${process.env.API_KEY_WP}`,
           },
         }
