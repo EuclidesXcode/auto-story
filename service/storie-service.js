@@ -55,6 +55,36 @@ class StoryService {
     }
   }
 
+  static async insertTags(tags) {
+    try {
+      let tagsIds = [];
+
+      await tags.forEach(async (tagName) => {
+        const newTag = {
+          name: tagName.name,
+          slug: tagName.name.toLowerCase().trim().replace(/\s+/g, "-"),
+        };
+
+        const response = await Axios.post(
+          `${process.env.BASE_PATH}/wp-json/wp/v2/tags`,
+          newTag,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${process.env.API_KEY_WP}`,
+            },
+          }
+        );
+
+        tagsIds.push(response.data.id);
+      });
+
+      return tagsIds;
+    } catch (error) {
+      console.log("Erro ao criar relacionamento de imagem de capa: ", error);
+    }
+  }
+
   static async relationshipStory(storyId, coverId, tagIds) {
 
     try {
@@ -77,36 +107,6 @@ class StoryService {
       );
 
       return response.data.id;
-    } catch (error) {
-      console.log("Erro ao criar relacionamento de imagem de capa: ", error);
-    }
-  }
-
-  static async insertTags(tags) {
-    try {
-      let tagsIds = [];
-
-      await tags.map(async (tagName) => {
-        const newTag = {
-          name: tagName.name,
-          slug: tagName.name.toLowerCase().trim().replace(/\s+/g, "-"),
-        };
-
-        const response = await Axios.post(
-          `${process.env.BASE_PATH}/wp-json/wp/v2/tags`,
-          newTag,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${process.env.API_KEY_WP}`,
-            },
-          }
-        );
-
-        tagsIds.push(response.data.id);
-      });
-
-      return tagsIds;
     } catch (error) {
       console.log("Erro ao criar relacionamento de imagem de capa: ", error);
     }
