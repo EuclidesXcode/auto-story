@@ -35,7 +35,7 @@ class GPTService {
 
   /**
    * @param {title} param titulo do story
-   * @returns {Object} Retorno de um obijeto contendo as 10 tags
+   * @returns {Object} Retorno de um objeto contendo as 10 tags
    */
   static async generateTags(title) {
     try {

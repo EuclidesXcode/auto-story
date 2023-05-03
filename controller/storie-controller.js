@@ -53,7 +53,14 @@ module.exports = class StorieController {
 
       const storyId = await StorieService.createStory(storieDTO);
 
-      const relationId = await StorieService.relationImageCoverToStory(
+        // taxonomias
+
+        const tags = await GPTService.generateTags(params.title)
+        console.log("TAGS: ", tags)
+
+        // taxonomias
+
+      const relationId = await StorieService.relationshipStory(
         storyId,
         imageCoverId
       );

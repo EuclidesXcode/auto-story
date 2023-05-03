@@ -56,10 +56,15 @@ class StoryService {
     }
   }
 
-  static async relationImageCoverToStory(storyId, coverId) {
+  static async relationshipStory(storyId, coverId) {
+
+        // , categoryIds, tagIds
+        // web_story_category: categoryIds,
+        // web_story_tag: tagIds
+
     try {
       const payload = {
-        featured_media: coverId,
+        featured_media: coverId
       };
   
       const response = await Axios.put(
