@@ -35,10 +35,44 @@ class GPTService {
 
   /**
    * @param {title} param titulo do story
+   * @returns {Object} Retorno de um objeto contendo as 10 categorias
+   */
+  static async generateCategories(title) {
+
+    try {
+      const url = "https://api.openai.com/v1/chat/completions";
+
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.API_KEY_OPEN_IA}`,
+      };
+
+      const content = `Gere 10 categorias separadas por virgula, sem pular linhas, atualizadas com base nos interesses atuais baseadas nesse titulo: ${title}`;
+
+      const data = {
+        messages: [{ role: "user", content: content }],
+        model: "gpt-3.5-turbo",
+        temperature: 0.7,
+      };
+
+      const response = await axios.post(url, data, { headers });
+
+      return response?.data?.choices[0].message.content;
+    } catch (err) {
+      console.error(
+        "[gpt-service-generate-categories] Error on generate Categories for Taxinomies: ",
+        err
+      );
+    }
+  }
+
+
+  /**
+   * @param {title} param titulo do story
    * @returns {Object} Retorno de um objeto contendo as 10 tags
    */
   static async generateTags(title) {
-    
+
     try {
       const url = "https://api.openai.com/v1/chat/completions";
 
@@ -57,10 +91,10 @@ class GPTService {
 
       const response = await axios.post(url, data, { headers });
 
-      return response.data;
+      return response?.data?.choices[0].message.content;
     } catch (err) {
       console.error(
-        "[gpt-service-generate-tags] Error on generate Tags for Taxinomies: ",
+        "[gpt-service-generate-categories] Error on generate Categories for Taxinomies: ",
         err
       );
     }
