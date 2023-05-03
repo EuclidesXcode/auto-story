@@ -58,12 +58,15 @@ class StoryService {
 
   static async relationImageCoverToStory(storyId, coverId) {
     try {
-      const payload = {
-        story_cover_relationship: storyId
+      const payload = 
+      {
+        meta: {
+          _thumbnail_id: coverId
+        }
       };
   
       const response = await Axios.put(
-        `${process.env.BASE_PATH}/wp-json/wp/v2/media/${coverId}`, 
+        `${process.env.BASE_PATH}/wp-json/wp/v2/stories/${storyId}`, 
         payload,
         {
           headers: {
