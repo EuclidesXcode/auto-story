@@ -79,8 +79,6 @@ module.exports = class StorieController {
 
       const tagsIds = await StorieService.insertTags(tagList)
 
-      console.log("TAGS: %j", tagsIds);
-
       // taxonomias
 
       const relationId = await StorieService.relationshipStory(
@@ -91,8 +89,8 @@ module.exports = class StorieController {
 
       if (relationId) {
         return {
-          statusCode: 201,
-          body: relationId,
+          statusCode: 200,
+          body: storyId,
         };
       }
 

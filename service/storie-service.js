@@ -56,15 +56,14 @@ class StoryService {
   }
 
   static async relationshipStory(storyId, coverId, tagIds) {
-    // , categoryIds, tagIds
-    // web_story_category: categoryIds,
-    // web_story_tag: tagIds
 
     try {
       const payload = {
-        featured_media: coverId,
-        web_story_tag: tagIds
+        "featured_media": coverId,
+        "web_story_tag": tagIds
       };
+
+      console.log("Payload do relacionamento: %j", payload)
 
       const response = await Axios.put(
         `${process.env.BASE_PATH}/wp-json/web-stories/v1/web-story/${storyId}`,
@@ -76,8 +75,6 @@ class StoryService {
           },
         }
       );
-
-      console.log("RELACIONAMENTO FEITO: ", response.data.id);
 
       return response.data.id;
     } catch (error) {
