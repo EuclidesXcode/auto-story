@@ -106,8 +106,8 @@ class StoryService {
       const payload = {
         featured_media: coverId,
         story_data: {
-          title: dataStory.data.title,
-          content: dataStory.data.content,      
+          title: dataStory.data.title.rendered,
+          content: dataStory.data.content.rendered,      
           taxonomy: {
             web_story_tag: tagIds,
           },
