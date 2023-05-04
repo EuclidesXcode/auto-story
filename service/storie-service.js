@@ -45,7 +45,7 @@ class StoryService {
         {
           headers: {
             "Content-Type": `multipart/form-data; boundary=${boundary}`,
-            Authorization: `Bearer ${process.env.API_KEY_WP}`,
+            Authorization: `Bearer ${process.env.API_KEY_WP_2}`,
           },
         }
       );
