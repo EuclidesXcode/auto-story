@@ -5,12 +5,12 @@ class StoryService {
     
     try {
       const response = await Axios.post(
-        `${process.env.BASE_PATH_2}/wp-json/web-stories/v1/web-story`,
+        `${process.env.BASE_PATH_POST_1}/wp-json/web-stories/v1/web-story`,
         storyDto,
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.API_KEY_WP_2}`,
+            Authorization: `Bearer ${process.env.API_KEY_WP_1}`,
           },
         }
       );
@@ -40,12 +40,12 @@ class StoryService {
       formData.append("description", "pato patata");
 
       const response = await Axios.post(
-        `${process.env.BASE_PATH_2}/wp-json/wp/v2/media`,
+        `${process.env.BASE_PATH_POST_1}/wp-json/wp/v2/media`,
         formData,
         {
           headers: {
             "Content-Type": `multipart/form-data; boundary=${boundary}`,
-            Authorization: `Bearer ${process.env.API_KEY_WP_2}`,
+            Authorization: `Bearer ${process.env.API_KEY_WP_1}`,
           },
         }
       );
@@ -68,12 +68,12 @@ class StoryService {
         };
 
         const promise = Axios.post(
-          `${process.env.BASE_PATH_2}/wp-json/wp/v2/tags`,
+          `${process.env.BASE_PATH_POST_1}/wp-json/wp/v2/tags`,
           newTag,
           {
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${process.env.API_KEY_WP_2}`,
+              Authorization: `Bearer ${process.env.API_KEY_WP_1}`,
             },
           }
         ).then((response) => {
@@ -119,12 +119,12 @@ class StoryService {
       console.log("Payload do relacionamento: %j", payload);
 
       const response = await Axios.put(
-        `${process.env.BASE_PATH_2}/wp-json/web-stories/v1/web-story/${storyId}`,
+        `${process.env.BASE_PATH_POST_1}/wp-json/web-stories/v1/web-story/${storyId}`,
         payload,
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.API_KEY_WP_2}`,
+            Authorization: `Bearer ${process.env.API_KEY_WP_1}`,
           },
         }
       );
