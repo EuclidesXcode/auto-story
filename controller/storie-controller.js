@@ -53,7 +53,7 @@ module.exports = class StorieController {
 
       const storyId = await StorieService.createStory(storieDTO);
 
-      // taxonomias
+      //taxonomias
 
       // const categories = await GPTService.generateCategories(params.title);
 
@@ -67,24 +67,28 @@ module.exports = class StorieController {
       //   });
       // });
 
-      // const tags = await GPTService.generateTags(params.title);
-
-      // let tagList = [];
-
-      // await tags.split(",").map((tag) => {
-      //   tagList.push({
-      //     name: tag.trim()
-      //   });
-      // });
-
-      // const tagsIds = await StorieService.insertTags(tagList)
-
-      // taxonomias
-
-      const relationId = await StorieService.relationshipStory(
+      const relationId = await StorieService.relationshipCoverStory(
         storyId,
         imageCoverId
       );
+      
+      const tags = await GPTService.generateTags(params.title);
+
+      let tagList = [];
+      
+      
+      tags.split(",").map((tag) => {
+        tagList.push({
+          name: tag.trim()
+        });
+      });
+
+      const tagsIds = await StorieService.insertTags(tagList)
+
+      await StorieService.relationshipTagsStory(storyId, tagsIds);
+      // taxonomias
+
+     
 
       if (relationId) {
         return {
