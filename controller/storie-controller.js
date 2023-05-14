@@ -56,7 +56,7 @@ module.exports = class StorieController {
       //taxonomias
 
       const categories = await GPTService.generateCategories(params.title);
-
+      console.log('CATEGORIAS GERADAS PELO GPT CUZAO', categories);
       let categoriesList = [];
 
       categories.split(",").map((category) => {
