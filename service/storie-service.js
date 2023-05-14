@@ -60,12 +60,15 @@ class StoryService {
       let tagsIds = [];
       const promises = [];
 
+      console.log("TAG DO GPT: %j", tags)
+
       for (const tagName of tags) {
         const newTag = {
           name: tagName.name,
           slug: tagName.name.toLowerCase().trim().replace(/\s+/g, "-"),
         };
 
+        console.log("MONTOU O NEW TAGS: %j", newTag)
         const promise = Axios.post(
           `${process.env.BASE_PATH_POST_1}/wp-json/web-stories/v1/web_story_tag`,
           newTag,
