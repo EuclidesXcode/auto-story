@@ -101,8 +101,6 @@ class StoryService {
       let categoryIds = [];
       const promises = [];
 
-      console.log("CATEGORY DO GPT: %j", categories)
-
       for (const category of categories) {
         const newCategory = {
           name: category.name,
