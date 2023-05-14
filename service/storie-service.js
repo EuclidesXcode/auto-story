@@ -81,7 +81,7 @@ class StoryService {
             response.data.id != null &&
             response.data.id != undefined
           )
-            return tagsIds.push( response.data.id );
+            return tagsIds.push(response.data.id);
         });
 
         promises.push(promise);
@@ -139,33 +139,23 @@ class StoryService {
 
   static async relationshipTagsStory(storyId, tagsId) {
     try {
-      const promises = [];
 
-      for (const tagId of tagsId) {
-        const payload = {
-          web_story_tag: tagId,
-        };
+      const payload = {
+        web_story_tag: tagsId,
+      };
 
-        console.log("Payload do relacionamento: %j", payload);
+      console.log("Payload do relacionamento TAGS: %j", tagsId);
 
-        const promise = Axios.put(
-          `${process.env.BASE_PATH_POST_1}/wp-json/web-stories/v1/web-story/${storyId}`,
-          payload,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${process.env.API_KEY_WP_1}`,
-            },
-          }
-        )
-          .then((res) => console.log("STORY TAG UPDATED SUCCESS: %j", res.data))
-          .catch((err) => console.log("STORY TAG UPDATE ERROR", err));
-
-        promises.push(promise);
-      }
-
-      return await Promise.all(promises);
-      
+      return await Axios.put(
+        `${process.env.BASE_PATH_POST_1}/wp-json/web-stories/v1/web-story/${storyId}`,
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.API_KEY_WP_1}`,
+          },
+        }
+      );
     } catch (error) {
       console.log("Erro ao criar relacionamento de imagem de capa: ", error);
     }
