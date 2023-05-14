@@ -47,7 +47,7 @@ class GPTService {
         Authorization: `Bearer ${process.env.API_KEY_OPEN_IA}`,
       };
 
-      const content = `Gere 10 categorias separadas por virgula, sem pular nenhuma linha, atualizadas com base nos interesses atuais baseadas nesse titulo: ${title}`;
+      const content = `Gere 10 categorias separadas por virgula, sem pular nenhuma linha, sem incluir #, por ex: minha categoria, esta categoria. Atualizadas com base nos interesses atuais baseadas nesse titulo: ${title}`;
 
       const data = {
         messages: [{ role: "user", content: content }],
