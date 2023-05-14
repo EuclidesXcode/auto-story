@@ -130,7 +130,7 @@ class StoryService {
 
       await Promise.all(promises);
 
-      return tagsIds;
+      return categoryIds;
     } catch (error) {
       console.log("Erro ao criar relacionamento de categoria: ", error);
     }
