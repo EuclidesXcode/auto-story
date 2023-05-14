@@ -82,7 +82,7 @@ class StoryService {
             return tagsIds.push(response.data.id);
         }).catch((err) => {
           console.log('ERROR RESPONSE TAGS INSERT %j', err.response.data.data);
-            return tagsIds.push(err.response.data.data.id);
+            return tagsIds.push(err.response.data.data.term_id);
         });
 
         promises.push(promise);
