@@ -67,7 +67,7 @@ class StoryService {
         };
 
         const promise = Axios.post(
-          `${process.env.BASE_PATH_POST_1}/wp-json/wp/v2/tags`,
+          `${process.env.BASE_PATH_POST_1}/wp-json/web-stories/v1/web_story_tag`,
           newTag,
           {
             headers: {
@@ -81,7 +81,7 @@ class StoryService {
             response.data.id != null &&
             response.data.id != undefined
           )
-            return tagsIds.push({ id: response.data.id });
+            return tagsIds.push( response.data.id );
         });
 
         promises.push(promise);
