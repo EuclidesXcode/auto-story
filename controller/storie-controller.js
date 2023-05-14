@@ -67,10 +67,7 @@ module.exports = class StorieController {
         });
       });
 
-      const categoriesId = await StorieService.insertCategories(
-        storyId,
-        categoriesList
-      );
+      const categoriesId = await StorieService.insertCategories(categoriesList);
 
       await StorieService.relationshipCategoriesStory(storyId, categoriesId);
 
