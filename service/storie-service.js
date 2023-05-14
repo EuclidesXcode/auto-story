@@ -79,10 +79,9 @@ class StoryService {
             },
           }
         ).then((response) => {
-          if (
-            response.status == 400
-          )
             return tagsIds.push(response.data.id);
+        }).catch((err) => {
+            return tagsIds.push(err.response.data.data.id);
         });
 
         promises.push(promise);
