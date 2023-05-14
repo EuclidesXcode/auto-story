@@ -163,7 +163,9 @@ class StoryService {
 
       const payload = {
         featured_media: coverId,
-        publisher_logo: 853
+        meta: {
+          web_stories_publisher_logo: 853
+        } 
       };
 
       console.log("Payload do relacionamento: %j", payload);
