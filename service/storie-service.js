@@ -60,7 +60,7 @@ class StoryService {
       let tagsIds = [];
       const promises = [];
 
-      console.log("TAG DO GPT: %j", tags)
+      // console.log("TAG DO GPT: %j", tags)
 
       for (const tagName of tags) {
         const newTag = {
@@ -68,7 +68,7 @@ class StoryService {
           slug: tagName.name.toLowerCase().trim().replace(/\s+/g, "-"),
         };
 
-        console.log("MONTOU O NEW TAGS: %j", newTag)
+        // console.log("MONTOU O NEW TAGS: %j", newTag)
         const promise = Axios.post(
           `${process.env.BASE_PATH_POST_1}/wp-json/web-stories/v1/web_story_tag`,
           newTag,
@@ -81,7 +81,7 @@ class StoryService {
         ).then((response) => {
             return tagsIds.push(response.data.id);
         }).catch((err) => {
-          console.log('ERROR RESPONSE TAGS INSERT %j', err.response.data.data);
+          // console.log('ERROR RESPONSE TAGS INSERT %j', err.response.data.data);
             return tagsIds.push(err.response.data.data.term_id);
         });
 
@@ -92,9 +92,57 @@ class StoryService {
 
       return tagsIds;
     } catch (error) {
-      console.log("Erro ao criar relacionamento de imagem de capa: ", error);
+      console.log("Erro ao criar relacionamento de tag: ", error);
     }
   }
+
+  static async insertCategories(categories) {
+    try {
+      let categoryIds = [];
+      const promises = [];
+
+      console.log("CATEGORY DO GPT: %j", categories)
+
+      for (const category of categories) {
+        const newCategory = {
+          name: category.name,
+          description: category.description,
+          slug: category.name.toLowerCase().trim().replace(/\s+/g, "-")
+        };
+
+        console.log("MONTOU O NEW CATEGORYS: %j", newCategory)
+        const promise = Axios.post(
+          `${process.env.BASE_PATH_POST_1}/wp-json/web-stories/v1/web_story_category`,
+          newCategory,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${process.env.API_KEY_WP_1}`,
+            },
+          }
+        ).then((response) => {
+            return categoryIds.push(response.data.id);
+        }).catch((err) => {
+          console.log('ERROR RESPONSE CATEGORY INSERT %j', err.response.data.data);
+            return categoryIds.push(err.response.data.data.term_id);
+        });
+
+        promises.push(promise);
+      }
+
+      await Promise.all(promises);
+
+      return tagsIds;
+    } catch (error) {
+      console.log("Erro ao criar relacionamento de categoria: ", error);
+    }
+  }
+
+
+
+
+
+
 
   static async relationshipCoverStory(storyId, coverId) {
     try {
@@ -145,7 +193,7 @@ class StoryService {
         web_story_tag: tagsId,
       };
 
-      console.log("Payload do relacionamento TAGS: %j", tagsId);
+      // console.log("Payload do relacionamento TAGS: %j", tagsId);
 
       return await Axios.put(
         `${process.env.BASE_PATH_POST_1}/wp-json/web-stories/v1/web-story/${storyId}`,
@@ -159,6 +207,30 @@ class StoryService {
       );
     } catch (error) {
       console.log("Erro ao criar relacionamento de imagem de capa: ", error);
+    }
+  }
+
+  static async relationshipCategoriesStory(storyId, categoriesId) {
+    try {
+
+      const payload = {
+        web_story_category: categoriesId,
+      };
+
+      console.log("Payload do relacionamento CATEGORYS: %j", categoriesId);
+
+      return await Axios.put(
+        `${process.env.BASE_PATH_POST_1}/wp-json/web-stories/v1/web-story/${storyId}`,
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.API_KEY_WP_1}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.log("Erro ao criar relacionamento de categorys: ", error);
     }
   }
 }
