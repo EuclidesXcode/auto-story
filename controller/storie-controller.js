@@ -88,7 +88,7 @@ module.exports = class StorieController {
 
       const tagsIds = await StorieService.insertTags(tagList)
 
-      await StorieService.relationshipTagsStory(storyId, tagsIds);
+      const relationId = await StorieService.relationshipTagsStory(storyId, tagsIds);
   
 
      
