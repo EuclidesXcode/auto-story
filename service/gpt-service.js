@@ -91,6 +91,8 @@ class GPTService {
 
       const response = await axios.post(url, data, { headers });
 
+      console.log("DIRETO DO GPT TAGS: %j", response)
+
       return response?.data?.choices[0].message.content;
     } catch (err) {
       console.error(

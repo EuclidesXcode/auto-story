@@ -79,10 +79,8 @@ class StoryService {
             },
           }
         ).then((response) => {
-          console.log("RESPONSE DAS TAGS: ", response)
           if (
-            response.data.id != null &&
-            response.data.id != undefined
+            response.status == 400
           )
             return tagsIds.push(response.data.id);
         });
